@@ -510,13 +510,14 @@ function fixLabelOverlap(
   //      [thumb1Value]                    [thumb2Value]
   // |-----------------[thumb1]----[thumb2]-------------------|
   //
+  // Note: round all values to not have weird decimal pixels (that make our Snapshot tests flaky)
   if (leftAlignedThumb1ValueFitsLeft && rightAlignedThumb2ValueFitsRight) {
     // Align value1 to the left of its thumb.
     thumb1ValueDiv.style.left = ""
-    thumb1ValueDiv.style.right = `${thumb1Rect.width}px`
+    thumb1ValueDiv.style.right = `${Math.round(thumb1Rect.width)}px`
 
     // Align value2 to the right of its thumb.
-    thumb2ValueDiv.style.left = `${thumb2Rect.width}px`
+    thumb2ValueDiv.style.left = `${Math.round(thumb2Rect.width)}px`
     thumb2ValueDiv.style.right = ""
 
     return
@@ -551,20 +552,17 @@ function fixLabelOverlap(
     fixLabelOverflow(sliderDiv, thumb1Div, thumb1ValueDiv)
 
     // Make thumb2Value appear to the right of thumb1Value.
-    thumb2ValueDiv.style.left = `${
+    thumb2ValueDiv.style.left = `${Math.round(
       thumb1MidPoint + thumb1ValueOverhang + labelGap - thumb2MidPoint
-    }px`
+    )}px`
     thumb2ValueDiv.style.right = ""
   } else {
     fixLabelOverflow(sliderDiv, thumb2Div, thumb2ValueDiv)
 
     // Make thumb1Value appear to the left of thumb2Value.
     thumb1ValueDiv.style.left = ""
-    thumb1ValueDiv.style.right = `${-(
-      thumb2MidPoint -
-      thumb2ValueOverhang -
-      labelGap -
-      thumb1MidPoint
+    thumb1ValueDiv.style.right = `${-Math.round(
+      thumb2MidPoint - thumb2ValueOverhang - labelGap - thumb1MidPoint
     )}px`
   }
 }
