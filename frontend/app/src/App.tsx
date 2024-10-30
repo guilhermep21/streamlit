@@ -146,7 +146,8 @@ interface State {
   userSettings: UserSettings
   dialog?: DialogProps | null
   layout: PageConfig.Layout
-  pageLayouts: Record<string, PageConfig.Layout>
+  // Preferred layouts for each page: <page script hash, layout>
+  preferredLayouts: Record<string, PageConfig.Layout>
   initialSidebarState: PageConfig.SidebarState
   menuItems?: PageConfig.IMenuItems | null
   allowRunOnSave: boolean
@@ -277,7 +278,7 @@ export class App extends PureComponent<Props, State> {
         runOnSave: false,
       },
       layout: PageConfig.Layout.CENTERED,
-      pageLayouts: {},
+      preferredLayouts: {},
       initialSidebarState: PageConfig.SidebarState.AUTO,
       menuItems: undefined,
       allowRunOnSave: true,
@@ -781,6 +782,15 @@ export class App extends PureComponent<Props, State> {
     }
 
     this.setState({ menuItems })
+
+    // Save current page layout
+    this.setState((prevState: State) => {
+      const newPreferredLayouts = prevState.preferredLayouts
+      newPreferredLayouts[prevState.currentPageScriptHash] = layout
+      return {
+        preferredLayouts: newPreferredLayouts,
+      }
+    })
   }
 
   handlePageInfoChanged = (pageInfo: PageInfo): void => {
@@ -819,7 +829,21 @@ export class App extends PureComponent<Props, State> {
   }
 
   handleNavigation = (navigationMsg: Navigation): void => {
+    const { currentPageScriptHash: prevPageScriptHash } = this.state
+
     this.maybeSetState(this.appNavigation.handleNavigation(navigationMsg))
+
+    // Ensures that if the current page's script hash is not already in the preferredLayouts object,
+    // it assigns the layout of the previous page to the current page.
+    const { currentPageScriptHash, preferredLayouts } = this.state
+    const keys = Object.keys(preferredLayouts)
+    if (!keys.includes(currentPageScriptHash)) {
+      preferredLayouts[currentPageScriptHash] =
+        preferredLayouts[prevPageScriptHash]
+      this.setState({
+        preferredLayouts: preferredLayouts,
+      })
+    }
   }
 
   handlePageProfileMsg = (pageProfile: PageProfile): void => {
@@ -988,7 +1012,7 @@ export class App extends PureComponent<Props, State> {
 
     const {
       appHash,
-      pageLayouts,
+      preferredLayouts,
       currentPageScriptHash: prevPageScriptHash,
     } = this.state
     const {
@@ -1054,11 +1078,11 @@ export class App extends PureComponent<Props, State> {
       )
     }
 
-    // Use previously saved layout if exists, otherwise default to CENTERED
-    // Pages using set_page_config(layout=...) will be overriding these values
+    // Use previously saved layout if exists, otherwise default to CENTERED.
+    // If page uses set_page_config, layout will be overridden in handlePageConfigChanged.
     this.setState((prevState: State) => {
       const newLayout =
-        pageLayouts[newPageScriptHash] ?? PageConfig.Layout.CENTERED
+        preferredLayouts[newPageScriptHash] ?? PageConfig.Layout.CENTERED
       return {
         layout: newLayout,
         userSettings: {
@@ -1302,6 +1326,18 @@ export class App extends PureComponent<Props, State> {
 
     this.setState({ userSettings: newSettings })
 
+    // Save current page layout
+    this.setState((prevState: State) => {
+      const newPreferredLayouts = prevState.preferredLayouts
+      newPreferredLayouts[prevState.currentPageScriptHash] =
+        newSettings.wideMode
+          ? PageConfig.Layout.WIDE
+          : PageConfig.Layout.CENTERED
+      return {
+        preferredLayouts: newPreferredLayouts,
+      }
+    })
+
     if (prevRunOnSave !== runOnSave && this.isServerConnected()) {
       const backMsg = new BackMsg({ setRunOnSave: runOnSave })
       backMsg.type = "setRunOnSave"
@@ -1443,7 +1479,6 @@ export class App extends PureComponent<Props, State> {
 
   onPageChange = (pageScriptHash: string): void => {
     const { elements, mainScriptHash } = this.state
-
     // We are about to change the page, so clear all auto reruns
     // This also happens in handleNewSession, but it might be too late compared
     // to small interval values, which might trigger a rerun before the new
@@ -1462,15 +1497,6 @@ export class App extends PureComponent<Props, State> {
         .map(element => getElementId(element))
         .filter(notUndefined)
     )
-
-    // Save current page layout before rerun
-    this.setState((prevState: State) => {
-      const pageLayouts = prevState.pageLayouts
-      pageLayouts[prevState.currentPageScriptHash] = prevState.layout
-      return {
-        pageLayouts: pageLayouts,
-      }
-    })
 
     this.sendRerunBackMsg(
       this.widgetMgr.getActiveWidgetStates(activeWidgetIds),
