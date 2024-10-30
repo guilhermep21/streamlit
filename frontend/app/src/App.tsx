@@ -1965,6 +1965,7 @@ export class App extends PureComponent<Props, State> {
             currentPageScriptHash,
             libConfig,
             fragmentIdsThisRun: this.state.fragmentIdsThisRun,
+            locale: window.navigator.language,
           }}
         >
           <Hotkeys
