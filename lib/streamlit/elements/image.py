@@ -75,18 +75,16 @@ class ImageMixin:
             Image caption. If displaying multiple images, caption should be a
             list of captions (one for each image).
         width : int or None
-            Image width. None means use the image width,
-            but do not exceed the width of the column.
-            Should be set for SVG images, as they have no default image width.
+            Image width. If this is ``None`` (default), Streamlit will use the
+            image's native width, up to the width of the parent container.
+            When using an SVG image without a default width, you should declare
+            ``width`` or use ``use_container_width=True``.
         use_column_width : "auto", "always", "never", or bool
             If "auto", set the image's width to its natural size,
             but do not exceed the width of the column.
             If "always" or True, set the image's width to the column width.
             If "never" or False, set the image's width to its natural size.
             Note: if set, `use_column_width` takes precedence over the `width` parameter.
-        .. deprecated::
-            The `use_column_width` parameter has been deprecated and will be removed in a future release.
-            Please utilize the `use_container_width` parameter instead.
         clamp : bool
             Clamp image pixel values to a valid range ([0-255] per channel).
             This is only meaningful for byte array images; the parameter is
@@ -105,14 +103,15 @@ class ImageMixin:
             Defaults to "auto" which identifies the compression type based
             on the type and format of the image argument.
         use_container_width : bool
-            Whether to override the figure's native width with the width of the
-            parent container. If ``use_container_width`` is ``True``, Streamlit
-            sets the width of the figure to match the width of the parent
+            Whether to override ``width`` with the width of the parent
             container. If ``use_container_width`` is ``False`` (default),
-            Streamlit sets the width of the image to its natural width, up to
-            the width of the parent container.
-            Note: if `use_container_width` is set to `True`, it will take
-            precedence over the `width` parameter
+            Streamlit sets the image's width according to ``width``. If
+            ``use_container_width`` is ``True``, Streamlit sets the width of
+            the image to match the width of the parent container.
+
+        .. deprecated::
+            ``use_column_width`` is deprecated and will be removed in a future
+            release. Please use the ``use_container_width`` parameter instead.
 
         Example
         -------
