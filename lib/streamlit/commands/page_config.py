@@ -15,6 +15,7 @@
 from __future__ import annotations
 
 import random
+from pathlib import Path
 from textwrap import dedent
 from typing import TYPE_CHECKING, Any, Final, Literal, Mapping, Union, cast
 
@@ -104,6 +105,10 @@ def _get_favicon_string(page_icon: PageIcon) -> str:
 
     if isinstance(page_icon, str) and page_icon.startswith(":material"):
         return validate_material_icon(page_icon)
+
+    # Convert Path to string if necessary
+    if isinstance(page_icon, Path):
+        page_icon = str(page_icon)
 
     # Fall back to image_to_url.
     try:

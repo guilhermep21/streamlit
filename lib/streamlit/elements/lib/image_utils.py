@@ -18,6 +18,7 @@ import io
 import os
 import re
 from enum import IntEnum
+from pathlib import Path
 from typing import TYPE_CHECKING, Final, Literal, Sequence, Union, cast
 
 from typing_extensions import TypeAlias
@@ -38,7 +39,9 @@ if TYPE_CHECKING:
 PILImage: TypeAlias = Union[
     "ImageFile.ImageFile", "Image.Image", "GifImagePlugin.GifImageFile"
 ]
-AtomicImage: TypeAlias = Union[PILImage, "npt.NDArray[Any]", io.BytesIO, str, bytes]
+AtomicImage: TypeAlias = Union[
+    PILImage, "npt.NDArray[Any]", io.BytesIO, str, Path, bytes
+]
 
 Channels: TypeAlias = Literal["RGB", "BGR"]
 ImageFormat: TypeAlias = Literal["JPEG", "PNG", "GIF"]
@@ -243,6 +246,10 @@ def image_to_url(
     from PIL import Image, ImageFile
 
     image_data: bytes
+
+    # Convert Path to string if necessary
+    if isinstance(image, Path):
+        image = str(image)
 
     # Strings
     if isinstance(image, str):
