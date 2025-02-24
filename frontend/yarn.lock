@@ -3016,7 +3016,7 @@ __metadata:
     react-plotly.js: "npm:^2.6.0"
     react-responsive-carousel: "npm:^3.2.23"
     react-syntax-highlighter: "npm:^15.5.0"
-    react-webcam: "npm:7.1.1"
+    react-webcam: "npm:7.2.0"
     react-window: "npm:^1.8.8"
     rehype-katex: "npm:^6.0.2"
     rehype-raw: "npm:^6.1.1"
@@ -15705,13 +15705,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-webcam@npm:7.1.1":
-  version: 7.1.1
-  resolution: "react-webcam@npm:7.1.1"
+"react-webcam@npm:7.2.0":
+  version: 7.2.0
+  resolution: "react-webcam@npm:7.2.0"
   peerDependencies:
     react: ">=16.2.0"
     react-dom: ">=16.2.0"
-  checksum: 10c0/78a5f57e3f55f1653c91a0f9fd3c94fd0865d30407b9864c033ded01edd4efbbc581520e7b7ee88055802574e602c8ffe6c4e5f282f4ed1a4ce6a9a2cb445c50
+  checksum: 10c0/d639a9e4cd545f66a5ecbfdc6c38344f6ae40e6609ba5fb26db730b48723158dedeeecdecba94e4d117517f4db0be828169db270c329b9b71d847e54aba6f7f0
   languageName: node
   linkType: hard
 
