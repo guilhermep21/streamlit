@@ -100,15 +100,25 @@ st.header("Column menu interaction")
 st.container(key="column-menu-test").dataframe(
     pd.DataFrame(
         # We need a couple more rows than random_df to fully cover the column menu
-        np.random.randn(8, 5),
-        columns=["Column A", "Column B", "Column C", "Column D", "Column E"],
+        np.random.randn(8, 6),
+        columns=[
+            "Column A",
+            "Column B",
+            "Column C",
+            "Column D",
+            "Column E",
+            "Column F",
+        ],
     ),
     column_config={
         "_index": st.column_config.Column(width="small"),
         "Column A": st.column_config.Column(width="small"),
         "Column B": st.column_config.Column(width="small"),
         "Column C": st.column_config.Column(width="small"),
-        "Column D": st.column_config.Column(width="small"),
+        # Test with internal hidden parameter:
+        "Column D": {"hidden": True, "width": "small"},
         "Column E": st.column_config.Column(width="small"),
+        "Column F": st.column_config.Column(width="small"),
     },
+    column_order=["Column A", "Column B", "Column E", "Column C", "Column D"],
 )

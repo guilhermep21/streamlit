@@ -18,45 +18,65 @@ import React from "react"
 
 import { updateColumnConfigTypeProps } from "./columnConfigUtils"
 
-type ColumnFormattingReturn = {
-  // A callback to change the format of a column
-  changeColumnFormat: (columnId: string, format: string) => void
+type ColumnVisibilityReturn = {
+  // Hides a column.
+  hideColumn: (columnId: string) => void
+  // Shows a column.
+  showColumn: (columnId: string) => void
 }
 
 /**
- * A React hook that adds the ability to interactively change the format of a column.
+ * A React hook that adds the ability to interactively hide and show columns from UI.
  *
+ * @param clearSelection - A callback to clear current selections in the table
  * @param setColumnConfigMapping - A callback to set the column config mapping state
  *
  * @returns An object containing the following properties:
- * - `changeColumnFormat`: A callback to change the format of a column
+ * - `hideColumn`: Hides a column.
+ * - `showColumn`: Shows a column.
  */
-function useColumnFormatting(
+function useColumnVisibility(
+  clearSelection: (keepRows?: boolean, keepColumns?: boolean) => void,
   setColumnConfigMapping: React.Dispatch<
     React.SetStateAction<Map<string, any>>
   >
-): ColumnFormattingReturn {
-  const changeColumnFormat = React.useCallback(
-    (columnId: string, format: string) => {
-      // Update the format parameter in the column config mapping:
+): ColumnVisibilityReturn {
+  const hideColumn = React.useCallback(
+    (columnId: string) => {
       setColumnConfigMapping(prevColumnConfigMapping => {
         return updateColumnConfigTypeProps({
           columnId,
           columnConfigMapping: prevColumnConfigMapping,
           updatedProps: {
-            type_config: {
-              format: format,
-            },
+            hidden: true,
           },
         })
       })
+      clearSelection(true, false)
     },
-    [setColumnConfigMapping]
+    [clearSelection, setColumnConfigMapping]
+  )
+
+  const showColumn = React.useCallback(
+    (columnId: string) => {
+      setColumnConfigMapping(prevColumnConfigMapping => {
+        return updateColumnConfigTypeProps({
+          columnId,
+          columnConfigMapping: prevColumnConfigMapping,
+          updatedProps: {
+            hidden: false,
+          },
+        })
+      })
+      clearSelection(true, false)
+    },
+    [clearSelection, setColumnConfigMapping]
   )
 
   return {
-    changeColumnFormat,
+    hideColumn,
+    showColumn,
   }
 }
 
-export default useColumnFormatting
+export default useColumnVisibility
