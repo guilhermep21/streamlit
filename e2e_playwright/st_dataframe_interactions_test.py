@@ -137,6 +137,7 @@ def test_data_editor_add_row_via_toolbar(
         "stElementToolbarButton"
     ).get_by_label("Add row")
     add_row_button.click()
+    wait_for_app_run(app)
 
     # The height should reflect that one row is added (247px+35px=282px):
     expect(data_editor_element).to_have_css("height", "282px")
@@ -148,8 +149,10 @@ def test_data_editor_add_row_via_toolbar(
     add_row_button.click()
     add_row_button.click()
     add_row_button.click()
+    wait_for_app_run(app)
 
     # Take a snapshot to check if rows are added:
+    unfocus_dataframe(app)
     assert_snapshot(data_editor_element, name="st_data_editor-added_rows_via_toolbar")
 
 
