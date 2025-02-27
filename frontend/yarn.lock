@@ -417,7 +417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/aggregation-layers@npm:9.1.4, @deck.gl/aggregation-layers@npm:^9.0.37":
+"@deck.gl/aggregation-layers@npm:9.1.4, @deck.gl/aggregation-layers@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/aggregation-layers@npm:9.1.4"
   dependencies:
@@ -451,7 +451,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/carto@npm:9.1.4, @deck.gl/carto@npm:^9.1.2":
+"@deck.gl/carto@npm:9.1.4, @deck.gl/carto@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/carto@npm:9.1.4"
   dependencies:
@@ -490,7 +490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/core@npm:9.1.4, @deck.gl/core@npm:^9.0.37":
+"@deck.gl/core@npm:9.1.4, @deck.gl/core@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/core@npm:9.1.4"
   dependencies:
@@ -530,7 +530,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/geo-layers@npm:9.1.4, @deck.gl/geo-layers@npm:^9.0.37":
+"@deck.gl/geo-layers@npm:9.1.4, @deck.gl/geo-layers@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/geo-layers@npm:9.1.4"
   dependencies:
@@ -577,7 +577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/json@npm:9.1.4, @deck.gl/json@npm:^9.0.37":
+"@deck.gl/json@npm:9.1.4, @deck.gl/json@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/json@npm:9.1.4"
   dependencies:
@@ -588,7 +588,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/layers@npm:9.1.4, @deck.gl/layers@npm:^9.0.37":
+"@deck.gl/layers@npm:9.1.4, @deck.gl/layers@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/layers@npm:9.1.4"
   dependencies:
@@ -622,7 +622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/mesh-layers@npm:9.1.4, @deck.gl/mesh-layers@npm:^9.0.37":
+"@deck.gl/mesh-layers@npm:9.1.4, @deck.gl/mesh-layers@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/mesh-layers@npm:9.1.4"
   dependencies:
@@ -637,7 +637,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/react@npm:9.1.4, @deck.gl/react@npm:^9.1.2":
+"@deck.gl/react@npm:9.1.4, @deck.gl/react@npm:^9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/react@npm:9.1.4"
   peerDependencies:
@@ -1491,7 +1491,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@loaders.gl/core@npm:^4.2.5":
+"@loaders.gl/core@npm:^4.3.3":
   version: 4.3.3
   resolution: "@loaders.gl/core@npm:4.3.3"
   dependencies:
@@ -2873,14 +2873,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@streamlit/lib@workspace:lib"
   dependencies:
-    "@deck.gl/aggregation-layers": "npm:^9.0.37"
-    "@deck.gl/carto": "npm:^9.1.2"
-    "@deck.gl/core": "npm:^9.0.37"
-    "@deck.gl/geo-layers": "npm:^9.0.37"
-    "@deck.gl/json": "npm:^9.0.37"
-    "@deck.gl/layers": "npm:^9.0.37"
-    "@deck.gl/mesh-layers": "npm:^9.0.37"
-    "@deck.gl/react": "npm:^9.1.2"
+    "@deck.gl/aggregation-layers": "npm:^9.1.4"
+    "@deck.gl/carto": "npm:^9.1.4"
+    "@deck.gl/core": "npm:^9.1.4"
+    "@deck.gl/geo-layers": "npm:^9.1.4"
+    "@deck.gl/json": "npm:^9.1.4"
+    "@deck.gl/layers": "npm:^9.1.4"
+    "@deck.gl/mesh-layers": "npm:^9.1.4"
+    "@deck.gl/react": "npm:^9.1.4"
     "@emotion-icons/emotion-icon": "npm:^4.1.0"
     "@emotion-icons/material-outlined": "npm:^3.14.0"
     "@emotion-icons/material-rounded": "npm:^3.14.0"
@@ -2892,7 +2892,7 @@ __metadata:
     "@glideapps/glide-data-grid": "npm:6.0.4-alpha8"
     "@glideapps/glide-data-grid-cells": "npm:6.0.4-alpha8"
     "@glideapps/glide-data-grid-source": "npm:6.0.4-alpha8"
-    "@loaders.gl/core": "npm:^4.2.5"
+    "@loaders.gl/core": "npm:^4.3.3"
     "@loaders.gl/csv": "npm:^4.3.3"
     "@loaders.gl/gltf": "npm:^4.3.3"
     "@streamlit/protobuf": "workspace:^"
@@ -2927,7 +2927,7 @@ __metadata:
     d3-graphviz: "npm:^5.6.0"
     date-fns: "npm:^2.6.0"
     decamelize: "npm:^6.0.0"
-    deck.gl: "npm:^9.0.37"
+    deck.gl: "npm:^9.1.4"
     dompurify: "npm:^3.2.4"
     eslint: "npm:^8.33.0"
     eslint-plugin-streamlit-custom: "file:../eslint-plugin-streamlit-custom"
@@ -7710,7 +7710,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deck.gl@npm:^9.0.37":
+"deck.gl@npm:^9.1.4":
   version: 9.1.4
   resolution: "deck.gl@npm:9.1.4"
   dependencies:
@@ -14703,9 +14703,9 @@ __metadata:
   linkType: hard
 
 "preact@npm:^10.17.0":
-  version: 10.26.3
-  resolution: "preact@npm:10.26.3"
-  checksum: 10c0/7eacc2be045343e64797c766d93489bf2f820e6b91bb3a280c7c854f74d282d1817016df3e462384f0d230949312983f1287f4fb63a4c507616faa9a954f1221
+  version: 10.24.1
+  resolution: "preact@npm:10.24.1"
+  checksum: 10c0/f9bc8b2f88d340f1b8f854208889244059c46916449b8f8f2174fcacbc0904c445c5870896fb0cfeaf442eeade975857e8e03f0785135c41d63cd32d9414c9c6
   languageName: node
   linkType: hard
 
