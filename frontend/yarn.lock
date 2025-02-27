@@ -2753,6 +2753,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sindresorhus/is@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "@sindresorhus/is@npm:4.6.0"
+  checksum: 10c0/33b6fb1d0834ec8dd7689ddc0e2781c2bfd8b9c4e4bacbcb14111e0ae00621f2c264b8a7d36541799d74888b5dccdf422a891a5cb5a709ace26325eedc81e22e
+  languageName: node
+  linkType: hard
+
 "@streamlit/app@workspace:app":
   version: 0.0.0-use.local
   resolution: "@streamlit/app@workspace:app"
@@ -2904,7 +2911,6 @@ __metadata:
     "@testing-library/user-event": "npm:^14.4.3"
     "@types/d3": "npm:^7.4.3"
     "@types/d3-graphviz": "npm:^2.6.10"
-    "@types/node-emoji": "npm:^1.8.2"
     "@types/plotly.js": "npm:^2.29.2"
     "@types/react": "npm:^18.2.0"
     "@types/react-color": "npm:^3.0.6"
@@ -2945,7 +2951,7 @@ __metadata:
     moment-duration-format: "npm:^2.3.2"
     moment-timezone: "npm:^0.5.47"
     native-file-system-adapter: "npm:^3.0.1"
-    node-emoji: "npm:^1.11.0"
+    node-emoji: "npm:^2.2.0"
     node-fetch: "npm:2.6.7"
     numbro: "npm:^2.5.0"
     plotly.js: "npm:^2.34.0"
@@ -2970,7 +2976,7 @@ __metadata:
     rehype-katex: "npm:^6.0.2"
     rehype-raw: "npm:^6.1.1"
     remark-directive: "npm:^3.0.1"
-    remark-emoji: "npm:^3.1.0"
+    remark-emoji: "npm:^3.1.2"
     remark-gfm: "npm:^3.0.1"
     remark-math: "npm:^5.1.1"
     sprintf-js: "npm:^1.1.3"
@@ -4192,13 +4198,6 @@ __metadata:
   version: 0.7.34
   resolution: "@types/ms@npm:0.7.34"
   checksum: 10c0/ac80bd90012116ceb2d188fde62d96830ca847823e8ca71255616bc73991aa7d9f057b8bfab79e8ee44ffefb031ddd1bcce63ea82f9e66f7c31ec02d2d823ccc
-  languageName: node
-  linkType: hard
-
-"@types/node-emoji@npm:^1.8.2":
-  version: 1.8.2
-  resolution: "@types/node-emoji@npm:1.8.2"
-  checksum: 10c0/a8076eb48f004798ee6865e3133b8c4f421feedfa35d4756e9992114afe1212822a523f2737404a3aac9881aa8933695c037095dba4d509b6f3c1b0f22f5d9a1
   languageName: node
   linkType: hard
 
@@ -5962,6 +5961,13 @@ __metadata:
   version: 5.3.0
   resolution: "chalk@npm:5.3.0"
   checksum: 10c0/8297d436b2c0f95801103ff2ef67268d362021b8210daf8ddbe349695333eb3610a71122172ff3b0272f1ef2cf7cc2c41fdaa4715f52e49ffe04c56340feed09
+  languageName: node
+  linkType: hard
+
+"char-regex@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "char-regex@npm:1.0.2"
+  checksum: 10c0/57a09a86371331e0be35d9083ba429e86c4f4648ecbe27455dbfb343037c16ee6fdc7f6b61f433a57cc5ded5561d71c56a150e018f40c2ffb7bc93a26dae341e
   languageName: node
   linkType: hard
 
@@ -8157,6 +8163,13 @@ __metadata:
   version: 9.2.2
   resolution: "emoji-regex@npm:9.2.2"
   checksum: 10c0/af014e759a72064cf66e6e694a7fc6b0ed3d8db680427b021a89727689671cefe9d04151b2cad51dbaf85d5ba790d061cd167f1cf32eb7b281f6368b3c181639
+  languageName: node
+  linkType: hard
+
+"emojilib@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "emojilib@npm:2.4.0"
+  checksum: 10c0/6e66ba8921175842193f974e18af448bb6adb0cf7aeea75e08b9d4ea8e9baba0e4a5347b46ed901491dcaba277485891c33a8d70b0560ca5cc9672a94c21ab8f
   languageName: node
   linkType: hard
 
@@ -13726,6 +13739,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-emoji@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "node-emoji@npm:2.2.0"
+  dependencies:
+    "@sindresorhus/is": "npm:^4.6.0"
+    char-regex: "npm:^1.0.2"
+    emojilib: "npm:^2.4.0"
+    skin-tone: "npm:^2.0.0"
+  checksum: 10c0/9525defbd90a82a2131758c2470203fa2a2faa8edd177147a8654a26307fe03594e52847ecbe2746d06cfc5c50acd12bd500f035350a7609e8217c9894c19aad
+  languageName: node
+  linkType: hard
+
 "node-fetch@npm:2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
@@ -15946,7 +15971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-emoji@npm:^3.1.0":
+"remark-emoji@npm:^3.1.2":
   version: 3.1.2
   resolution: "remark-emoji@npm:3.1.2"
   dependencies:
@@ -16611,6 +16636,15 @@ __metadata:
   version: 1.0.0
   resolution: "signum@npm:1.0.0"
   checksum: 10c0/e29582d673f0e2f3b2345f7e795f2c2be192e353f80371ed79631a0708f0200dd4db7997636b51b818007cd426da156becee3316ff9fa5c63004ce672162c74b
+  languageName: node
+  linkType: hard
+
+"skin-tone@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "skin-tone@npm:2.0.0"
+  dependencies:
+    unicode-emoji-modifier-base: "npm:^1.0.0"
+  checksum: 10c0/82d4c2527864f9cbd6cb7f3c4abb31e2224752234d5013b881d3e34e9ab543545b05206df5a17d14b515459fcb265ce409f9cfe443903176b0360cd20e4e4ba5
   languageName: node
   linkType: hard
 
@@ -18096,6 +18130,13 @@ __metadata:
   version: 6.19.8
   resolution: "undici-types@npm:6.19.8"
   checksum: 10c0/078afa5990fba110f6824823ace86073b4638f1d5112ee26e790155f481f2a868cc3e0615505b6f4282bdf74a3d8caad715fd809e870c2bb0704e3ea6082f344
+  languageName: node
+  linkType: hard
+
+"unicode-emoji-modifier-base@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "unicode-emoji-modifier-base@npm:1.0.0"
+  checksum: 10c0/b37623fcf0162186debd20f116483e035a2d5b905b932a2c472459d9143d446ebcbefb2a494e2fe4fa7434355396e2a95ec3fc1f0c29a3bc8f2c827220e79c66
   languageName: node
   linkType: hard
 
