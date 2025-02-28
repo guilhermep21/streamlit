@@ -2807,7 +2807,7 @@ __metadata:
     eslint-interactive: "npm:^11.1.0"
     eslint-plugin-import: "npm:^2.31.0"
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
-    eslint-plugin-lodash: "npm:^7.4.0"
+    eslint-plugin-lodash: "npm:^8.0.0"
     eslint-plugin-no-relative-import-paths: "npm:^1.6.1"
     eslint-plugin-prettier: "npm:^4.2.1"
     eslint-plugin-react: "npm:^7.37.2"
@@ -8779,14 +8779,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-lodash@npm:^7.4.0":
-  version: 7.4.0
-  resolution: "eslint-plugin-lodash@npm:7.4.0"
+"eslint-plugin-lodash@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "eslint-plugin-lodash@npm:8.0.0"
   dependencies:
     lodash: "npm:^4.17.21"
   peerDependencies:
-    eslint: ">=2"
-  checksum: 10c0/6bd681e7374d4c7f9d150556206eb76e9240b0423ffc65a74178816102ba7063227cc296ed8e10c40108e040935fd29871db4ba0a6b6c6eeef49ee341b203ff4
+    eslint: ">=9.0.0"
+  checksum: 10c0/7850aa39e44db6bf3590460b6b7fcdbb41dfbfcfda8f20d04d12e09127154e86811c8c9c291151d214422daa5aa50812525569ff58837c53c0e93c1ebb8cbc54
   languageName: node
   linkType: hard
 
