@@ -102,7 +102,7 @@
     "prop-types": "^15.7.2",
     "source-map-explorer": "^2.5.3",
     "tree-kill": "^1.2.2",
-    "tsconfig-paths-webpack-plugin": "^4.0.1",
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
     "util": "^0.12.5",
     "vite": "^6.2.0",
     "vite-plugin-svgr": "^4.2.0",
