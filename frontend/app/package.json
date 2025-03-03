@@ -35,7 +35,7 @@
     "classnames": "^2.3.2",
     "color2k": "^2.0.2",
     "hoist-non-react-statics": "^3.3.2",
-    "humanize-string": "^2.1.0",
+    "humanize-string": "^3.0.0",
     "iframe-resizer": "4.3.11",
     "immer": "^9.0.19",
     "lodash": "^4.17.21",
