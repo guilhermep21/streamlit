@@ -3152,7 +3152,7 @@ __metadata:
     "@testing-library/user-event": "npm:^14.6.1"
     "@types/d3": "npm:^7.4.3"
     "@types/d3-graphviz": "npm:^2.6.10"
-    "@types/plotly.js": "npm:^2.29.2"
+    "@types/plotly.js": "npm:^2.35.2"
     "@types/react": "npm:^18.2.0"
     "@types/react-color": "npm:^3.0.13"
     "@types/react-dom": "npm:^18.2.0"
@@ -4495,10 +4495,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/plotly.js@npm:*, @types/plotly.js@npm:^2.29.2":
+"@types/plotly.js@npm:*":
   version: 2.33.4
   resolution: "@types/plotly.js@npm:2.33.4"
   checksum: 10c0/a886e11958048cdf68546051eb9ede860dcca24ed1bf8b245ffa34b42007a8acf82137c0e1a099899ceebc084689f2f3aa11b3a7315f9757922f37204be2a46f
+  languageName: node
+  linkType: hard
+
+"@types/plotly.js@npm:^2.35.2":
+  version: 2.35.2
+  resolution: "@types/plotly.js@npm:2.35.2"
+  checksum: 10c0/7b7b6d7ee5a5393f4cb42ed1e67b8f72624f8e6d4aedb778b15481e2b028bcafb520d549ed3eb2d05693523fc2b3e7b7252ef6f661c9c1d97d4c527428dc1ba7
   languageName: node
   linkType: hard
 
