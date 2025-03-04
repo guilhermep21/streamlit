@@ -158,7 +158,7 @@
     "tsc-alias": "^1.8.11",
     "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.1",
-    "vite-plugin-svgr": "^4.2.0",
+    "vite-plugin-svgr": "^4.3.0",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.7",
     "vitest-canvas-mock": "^0.3.3",
