@@ -127,7 +127,10 @@ const Popover: React.FC<React.PropsWithChildren<PopoverProps>> = ({
         {/* This needs to be wrapped into a div, otherwise
         the BaseWeb popover implementation will not work correctly. */}
         <div>
-          <BaseButtonTooltip help={element.help}>
+          <BaseButtonTooltip
+            help={element.help}
+            containerWidth={element.useContainerWidth}
+          >
             <BaseButton
               data-testid="stPopoverButton"
               kind={BaseButtonKind.SECONDARY}
