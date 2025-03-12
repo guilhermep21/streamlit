@@ -206,16 +206,16 @@ const NumberInput: React.FC<Props> = ({
 
     const numberInput = inputRef.current
     if (numberInput) {
+      const preventScroll: EventListener = (e): void => {
+        e.preventDefault()
+      }
+
       // Issue #8867: Disable wheel events on the input to avoid accidental changes
       // caused by scrolling.
-      // TODO: Update to match React best practices
-      // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
-      numberInput.addEventListener("wheel", e => e.preventDefault())
+      numberInput.addEventListener("wheel", preventScroll)
 
       return () => {
-        // TODO: Update to match React best practices
-        // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
-        numberInput.removeEventListener("wheel", e => e.preventDefault())
+        numberInput.removeEventListener("wheel", preventScroll)
       }
     }
 
