@@ -46,9 +46,7 @@ function CameraInputButton({
       data-testid="stCameraInputButton"
     >
       {children}
-      {/* TODO: Update to match React best practices */}
-      {/* eslint-disable-next-line @eslint-react/no-leaked-conditional-rendering */}
-      {progress && (
+      {progress ? (
         <StyledProgressBar>
           <ProgressBar
             value={progress}
@@ -75,7 +73,7 @@ function CameraInputButton({
             }}
           />
         </StyledProgressBar>
-      )}
+      ) : null}
     </StyledCameraInputBaseButton>
   )
 }

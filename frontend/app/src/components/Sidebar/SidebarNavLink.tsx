@@ -52,9 +52,7 @@ const SidebarNavLink = ({
         href={pageUrl}
         onClick={onClick}
       >
-        {/* TODO: Update to match React best practices */}
-        {/* eslint-disable-next-line @eslint-react/no-leaked-conditional-rendering */}
-        {icon && icon.length && (
+        {icon?.length ? (
           <StyledSidebarNavIcon isActive={isActive}>
             <DynamicIcon
               size="md"
@@ -68,7 +66,7 @@ const SidebarNavLink = ({
               }
             />
           </StyledSidebarNavIcon>
-        )}
+        ) : null}
         <StyledSidebarLinkText isActive={isActive}>
           {children}
         </StyledSidebarLinkText>

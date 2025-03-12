@@ -210,9 +210,7 @@ function ComponentInstance(props: Props): ReactElement {
   // custom components that define a height property, e.g. in Python
   // my_custom_component(height=100). undefined means no explicit height
   // was specified, but will be set to the default height of 0.
-  const [frameHeight, setFrameHeight] = useState<number | undefined>(
-    // TODO: Update to match React best practices
-    // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
+  const [frameHeight, setFrameHeight] = useState<number | undefined>(() =>
     isNaN(parsedNewArgs.height) ? undefined : parsedNewArgs.height
   )
 

@@ -60,9 +60,7 @@ function TextInput({
    * widget's UI, the default value is used.
    */
   const [uiValue, setUiValue] = useState<string | null>(
-    // TODO: Update to match React best practices
-    // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
-    getStateFromWidgetMgr(widgetMgr, element) ?? null
+    () => getStateFromWidgetMgr(widgetMgr, element) ?? null
   )
 
   const [width, elementRef] = useCalculatedWidth()

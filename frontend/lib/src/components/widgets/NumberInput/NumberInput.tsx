@@ -90,15 +90,11 @@ const NumberInput: React.FC<Props> = ({
 
   const [width, elementRef] = useCalculatedWidth()
 
-  // TODO: Update to match React best practices
-  // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
-  const [step, setStep] = useState<number>(getStep(element))
+  const [step, setStep] = useState<number>(() => getStep(element))
   const initialValue = getInitialValue({ element, widgetMgr })
   const [dirty, setDirty] = useState(false)
   const [value, setValue] = useState<number | null>(initialValue)
-  const [formattedValue, setFormattedValue] = useState<string | null>(
-    // TODO: Update to match React best practices
-    // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
+  const [formattedValue, setFormattedValue] = useState<string | null>(() =>
     formatValue({ value: initialValue, ...element, step })
   )
   const [isFocused, setIsFocused] = useState(false)
