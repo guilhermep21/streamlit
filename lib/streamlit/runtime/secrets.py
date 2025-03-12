@@ -492,6 +492,20 @@ class Secrets(Mapping[str, Any]):
         except KeyError:
             raise KeyError(_missing_key_error_message(key))
 
+    def __setattr__(self, key: str, value: Any) -> None:
+        # Allow internal attributes to be set
+        if key in {
+            "_secrets",
+            "_lock",
+            "_file_watchers_installed",
+            "_suppress_print_error_on_exception",
+            "file_change_listener",
+            "load_if_toml_exists",
+        }:
+            super().__setattr__(key, value)
+        else:
+            raise TypeError("Secrets does not support attribute assignment.")
+
     def __repr__(self) -> str:
         # If the runtime is NOT initialized, it is a method call outside
         # the streamlit app, so we avoid reading the secrets file as it may not exist.

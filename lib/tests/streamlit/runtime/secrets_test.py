@@ -18,12 +18,14 @@ from __future__ import annotations
 
 import os
 import tempfile
+import threading
 import unittest
 from collections.abc import Mapping, MutableMapping
 from collections.abc import Mapping as MappingABC
 from collections.abc import MutableMapping as MutableMappingABC
 from unittest.mock import MagicMock, mock_open, patch
 
+from blinker import Signal
 from parameterized import parameterized
 from toml import TomlDecodeError
 
@@ -254,6 +256,46 @@ class SecretsTest(unittest.TestCase):
             self.assertIsNone(self.secrets.get("db_password"))
             self.assertEqual("Joan", os.environ["db_username"])
             self.assertIsNone(os.environ.get("db_password"))
+
+    @patch("streamlit.watcher.path_watcher.watch_file")
+    @patch("builtins.open", new_callable=mock_open, read_data=MOCK_TOML)
+    def test_internal_attribute_assignment_allowed(self, *mocks):
+        """Verify that internal attribute assignment is allowed."""
+        # Test setting each allowed internal attribute
+        self.secrets._secrets = {}
+        self.assertEqual(self.secrets._secrets, {})
+
+        # Create and test RLock
+        lock = threading.RLock()
+        self.secrets._lock = lock
+        self.assertEqual(self.secrets._lock, lock)
+        # Verify it's actually a lock by trying to acquire it
+        self.assertTrue(self.secrets._lock.acquire(blocking=False))
+        self.secrets._lock.release()
+
+        self.secrets._file_watchers_installed = True
+        self.assertTrue(self.secrets._file_watchers_installed)
+
+        self.secrets._suppress_print_error_on_exception = True
+        self.assertTrue(self.secrets._suppress_print_error_on_exception)
+
+        self.secrets.file_change_listener = Signal()
+        self.assertIsInstance(self.secrets.file_change_listener, Signal)
+
+        # Test that load_if_toml_exists can be assigned
+        original_method = self.secrets.load_if_toml_exists
+        self.secrets.load_if_toml_exists = lambda: True
+        self.assertNotEqual(self.secrets.load_if_toml_exists, original_method)
+
+    @patch("streamlit.watcher.path_watcher.watch_file")
+    @patch("builtins.open", new_callable=mock_open, read_data=MOCK_TOML)
+    def test_attribute_assignment_raises_type_error(self, *mocks):
+        """Verify that attribute assignment raises TypeError."""
+        with self.assertRaises(TypeError) as cm:
+            self.secrets.new_secret = "123"
+        self.assertEqual(
+            str(cm.exception), "Secrets does not support attribute assignment."
+        )
 
 
 class MultipleSecretsFilesTest(unittest.TestCase):
