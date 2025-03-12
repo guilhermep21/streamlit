@@ -211,6 +211,8 @@ function ComponentInstance(props: Props): ReactElement {
   // my_custom_component(height=100). undefined means no explicit height
   // was specified, but will be set to the default height of 0.
   const [frameHeight, setFrameHeight] = useState<number | undefined>(
+    // TODO: Update to match React best practices
+    // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
     isNaN(parsedNewArgs.height) ? undefined : parsedNewArgs.height
   )
 
@@ -226,8 +228,10 @@ function ComponentInstance(props: Props): ReactElement {
     COMPONENT_READY_WARNING_TIME_MS / 4
   )
   const clearTimeoutWarningElement = useTimeout(() => {
-    // To keep behavior the same as before introducing `createRoot` and after,
-    // we ensure that the state updates are flushed immediately.
+    /* eslint-disable-next-line @eslint-react/dom/no-flush-sync -- To keep
+     * behavior the same as before introducing `createRoot` and after, we ensure
+     * that the state updates are flushed immediately.
+     */
     flushSync(() => {
       setIsReadyTimeout(true)
     })
@@ -272,8 +276,10 @@ function ComponentInstance(props: Props): ReactElement {
       // immediately change their frameHeight after mounting). This is wasteful,
       // and it also breaks certain components.
       iframeRef.current.height = height.toString()
-      // To keep behavior the same as before introducing `createRoot` and after,
-      // we ensure that the state updates are flushed immediately.
+      /* eslint-disable-next-line @eslint-react/dom/no-flush-sync -- To keep
+       * behavior the same as before introducing `createRoot` and after, we ensure
+       * that the state updates are flushed immediately.
+       */
       flushSync(() => {
         setFrameHeight(height)
       })
@@ -291,8 +297,10 @@ function ComponentInstance(props: Props): ReactElement {
       clearTimeoutLog()
       clearTimeoutWarningElement()
       isReadyRef.current = true
-      // To keep behavior the same as before introducing `createRoot` and after,
-      // we ensure that the state updates are flushed immediately.
+      /* eslint-disable-next-line @eslint-react/dom/no-flush-sync -- To keep
+       * behavior the same as before introducing `createRoot` and after, we ensure
+       * that the state updates are flushed immediately.
+       */
       flushSync(() => {
         setIsReadyTimeout(false)
       })

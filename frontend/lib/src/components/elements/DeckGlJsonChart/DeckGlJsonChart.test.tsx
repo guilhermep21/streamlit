@@ -288,6 +288,8 @@ describe("#useDeckGl", () => {
         useDeckGl(props)
         const { expand } = useRequiredContext(ElementFullscreenContext)
 
+        // TODO: Update to match React best practices
+        // eslint-disable-next-line @eslint-react/dom/no-missing-button-type
         return <button onClick={expand}>Expand</button>
       }
 

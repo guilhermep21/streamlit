@@ -42,6 +42,8 @@ const withPagination = (
   }: Props): ReactElement => {
     const [currentPage, updateCurrentPage] = useState<number>(0)
     const [totalPages, updateTotalPages] = useState<number>(
+      // TODO: Update to match React best practices
+      // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
       calculateNumPages(items, pageSize)
     )
 

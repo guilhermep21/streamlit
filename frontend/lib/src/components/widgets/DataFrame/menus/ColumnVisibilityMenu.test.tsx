@@ -108,6 +108,8 @@ describe("DataFrame ColumnVisibilityMenu", () => {
     setColumnOrder: vi.fn(),
     hideColumn: vi.fn(),
     showColumn: vi.fn(),
+    // TODO: Update to match React best practices
+    // eslint-disable-next-line @eslint-react/dom/no-missing-button-type
     children: <button>Toggle Visibility</button>,
     isOpen: true,
     onClose: vi.fn(),

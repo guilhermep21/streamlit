@@ -92,7 +92,11 @@ function ColumnMenu({
       document.removeEventListener("touchmove", preventScroll)
     }
 
+    // TODO: Update to match React best practices
+    // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
     document.addEventListener("wheel", preventScroll, { passive: false })
+    // TODO: Update to match React best practices
+    // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
     document.addEventListener("touchmove", preventScroll, { passive: false })
 
     return () => {

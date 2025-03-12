@@ -43,6 +43,8 @@ export function useThemeManager(): [ThemeManager, object[]] {
   const defaultTheme = getDefaultTheme()
   const [theme, setTheme] = useState<ThemeConfig>(defaultTheme)
   const [fontFaces, setFontFaces] = useState<object[]>([])
+  // TODO: Update to match React best practices
+  // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
   const [availableThemes, setAvailableThemes] = useState<ThemeConfig[]>([
     ...createPresetThemes(),
     ...(isPresetTheme(defaultTheme) ? [] : [defaultTheme]),

@@ -229,6 +229,8 @@ export function useScrollToBottom<T extends HTMLElement>(): RefObject<T> {
         scrollHeightRef.current = target.scrollHeight
       }
 
+      // TODO: Update to match React best practices
+      // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
       target.addEventListener("focus", handleFocus, {
         capture: true,
         passive: true,

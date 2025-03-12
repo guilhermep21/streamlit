@@ -90,11 +90,15 @@ const NumberInput: React.FC<Props> = ({
 
   const [width, elementRef] = useCalculatedWidth()
 
+  // TODO: Update to match React best practices
+  // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
   const [step, setStep] = useState<number>(getStep(element))
   const initialValue = getInitialValue({ element, widgetMgr })
   const [dirty, setDirty] = useState(false)
   const [value, setValue] = useState<number | null>(initialValue)
   const [formattedValue, setFormattedValue] = useState<string | null>(
+    // TODO: Update to match React best practices
+    // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
     formatValue({ value: initialValue, ...element, step })
   )
   const [isFocused, setIsFocused] = useState(false)
@@ -204,9 +208,13 @@ const NumberInput: React.FC<Props> = ({
     if (numberInput) {
       // Issue #8867: Disable wheel events on the input to avoid accidental changes
       // caused by scrolling.
+      // TODO: Update to match React best practices
+      // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
       numberInput.addEventListener("wheel", e => e.preventDefault())
 
       return () => {
+        // TODO: Update to match React best practices
+        // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener
         numberInput.removeEventListener("wheel", e => e.preventDefault())
       }
     }

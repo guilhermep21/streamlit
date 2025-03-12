@@ -81,6 +81,8 @@ const ThemeCreatorDialog = (props: Props): ReactElement => {
     updateCopied(true)
   }
 
+  // TODO: Update to match React best practices
+  // eslint-disable-next-line @eslint-react/no-nested-components
   const ThemeOption = ({
     name,
     value,

@@ -130,6 +130,8 @@ const StatusWidget: React.FC<StatusWidgetProps> = ({
   const shouldMinimize = useCallback((): boolean => {
     return window.scrollY > 32
   }, [])
+  // TODO: Update to match React best practices
+  // eslint-disable-next-line @eslint-react/hooks-extra/prefer-use-state-lazy-initialization
   const [statusMinimized, setStatusMinimized] = useState(shouldMinimize())
   const [scriptChangedOnDisk, setScriptChangedOnDisk] = useState(false)
   const [promptMinimized, setPromptMinimized] = useState(false)
@@ -264,6 +266,7 @@ const StatusWidget: React.FC<StatusWidgetProps> = ({
   useEffect(() => {
     if (scriptRunState === ScriptRunState.RUNNING) {
       setScriptChangedOnDisk(false)
+
       setPromptHovered(false)
     }
   }, [scriptRunState])
