@@ -717,7 +717,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@deck.gl/mesh-layers@npm:9.1.4, @deck.gl/mesh-layers@npm:^9.1.4":
+"@deck.gl/mesh-layers@npm:9.1.4":
   version: 9.1.4
   resolution: "@deck.gl/mesh-layers@npm:9.1.4"
   dependencies:
@@ -729,6 +729,21 @@ __metadata:
     "@luma.gl/core": ^9.1.0
     "@luma.gl/engine": ^9.1.0
   checksum: 10c0/f6f05474756a8f995b72f16dd7f2f76668c858eb7351bde93be51dad2fbe0af518be8a3344f9944b6412f7f91ac8307b2cd75958fb380b17de80a3a67fef8c93
+  languageName: node
+  linkType: hard
+
+"@deck.gl/mesh-layers@npm:^9.1.5":
+  version: 9.1.5
+  resolution: "@deck.gl/mesh-layers@npm:9.1.5"
+  dependencies:
+    "@loaders.gl/gltf": "npm:^4.2.0"
+    "@luma.gl/gltf": "npm:^9.1.3"
+    "@luma.gl/shadertools": "npm:^9.1.3"
+  peerDependencies:
+    "@deck.gl/core": ^9.1.0
+    "@luma.gl/core": ^9.1.3
+    "@luma.gl/engine": ^9.1.3
+  checksum: 10c0/6f60a62683ee1e76e82fb08c3be3b6a53b2695d707ce945db4f116c8e0abeb72f9b99941798e52cea1b457f1dc9c4125bb025c4cf1711fb30ace886814ce5474
   languageName: node
   linkType: hard
 
@@ -2093,6 +2108,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@luma.gl/gltf@npm:^9.1.3":
+  version: 9.1.5
+  resolution: "@luma.gl/gltf@npm:9.1.5"
+  dependencies:
+    "@loaders.gl/core": "npm:^4.2.0"
+    "@loaders.gl/textures": "npm:^4.2.0"
+    "@math.gl/core": "npm:^4.1.0"
+  peerDependencies:
+    "@luma.gl/core": ^9.1.0
+    "@luma.gl/engine": ^9.1.0
+    "@luma.gl/shadertools": ^9.1.0
+  checksum: 10c0/1740c3da1c504106640c85233178cddd6eb5326b97c12df68a993bee819c39ed100f4b3f2a6a3c2b3b8ef43c73cb5434881e1121d0efb0f01db2baf3710fdba0
+  languageName: node
+  linkType: hard
+
 "@luma.gl/shadertools@npm:^9.1.2":
   version: 9.1.2
   resolution: "@luma.gl/shadertools@npm:9.1.2"
@@ -3093,7 +3123,7 @@ __metadata:
     "@deck.gl/geo-layers": "npm:^9.1.4"
     "@deck.gl/json": "npm:^9.1.4"
     "@deck.gl/layers": "npm:^9.1.4"
-    "@deck.gl/mesh-layers": "npm:^9.1.4"
+    "@deck.gl/mesh-layers": "npm:^9.1.5"
     "@deck.gl/react": "npm:^9.1.4"
     "@emotion-icons/emotion-icon": "npm:^4.1.0"
     "@emotion-icons/material-outlined": "npm:^3.14.0"
