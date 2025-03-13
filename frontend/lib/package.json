@@ -34,7 +34,7 @@
     "@deck.gl/aggregation-layers": "^9.1.5",
     "@deck.gl/carto": "^9.1.4",
     "@deck.gl/core": "^9.1.4",
-    "@deck.gl/geo-layers": "^9.1.4",
+    "@deck.gl/geo-layers": "^9.1.5",
     "@deck.gl/json": "^9.1.4",
     "@deck.gl/layers": "^9.1.4",
     "@deck.gl/mesh-layers": "^9.1.5",
