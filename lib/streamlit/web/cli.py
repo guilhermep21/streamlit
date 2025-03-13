@@ -110,7 +110,7 @@ def configurator_options(func: F) -> F:
 
 
 def _download_remote(main_script_path: str, url_path: str) -> None:
-    """Fetch remote file at url_path to main_script_path"""
+    """Fetch remote file at url_path to main_script_path."""
     import requests
 
     with open(main_script_path, "wb") as fp:
@@ -133,7 +133,7 @@ def main(log_level="info"):
     Or use the line below to run your own script:
 
         $ streamlit run your_script.py
-    """
+    """  # noqa: D400
 
     if log_level:
         from streamlit.logger import get_logger
