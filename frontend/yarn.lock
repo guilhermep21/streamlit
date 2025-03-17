@@ -3155,7 +3155,7 @@ __metadata:
     unist-util-visit: "npm:^5.0.0"
     urlpattern-polyfill: "npm:^10.0.0"
     uuid: "npm:^11.1.0"
-    vega: "npm:^5.32.0"
+    vega: "npm:^5.33.0"
     vega-embed: "npm:^6.29.0"
     vega-interpreter: "npm:^1.2.0"
     vega-lite: "npm:5.23.0"
@@ -19330,9 +19330,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vega-functions@npm:^5.17.0, vega-functions@npm:~5.17.0":
-  version: 5.17.0
-  resolution: "vega-functions@npm:5.17.0"
+"vega-functions@npm:^5.18.0, vega-functions@npm:~5.18.0":
+  version: 5.18.0
+  resolution: "vega-functions@npm:5.18.0"
   dependencies:
     d3-array: "npm:^3.2.2"
     d3-color: "npm:^3.1.0"
@@ -19345,7 +19345,7 @@ __metadata:
     vega-statistics: "npm:^1.9.0"
     vega-time: "npm:^2.1.3"
     vega-util: "npm:^1.17.3"
-  checksum: 10c0/cdfa3b55c3782725649dbcb369071b5acfae91ac3b02c54b92ea34fb4194576a1069bceb66d8806331f13497bb570142e9127dea7f95fa7d7948dc0ae82d0a3d
+  checksum: 10c0/231a4efabf819a3cfa8ef22d791acb329dc6d0afb04a0d10c7b5463315e987a5b0d991430ef0c6f7cf4c85518f0eb8664d85543bb80716aacc7ccaa2ea829c60
   languageName: node
   linkType: hard
 
@@ -19438,16 +19438,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vega-parser@npm:~6.5.0":
-  version: 6.5.0
-  resolution: "vega-parser@npm:6.5.0"
+"vega-parser@npm:~6.6.0":
+  version: 6.6.0
+  resolution: "vega-parser@npm:6.6.0"
   dependencies:
     vega-dataflow: "npm:^5.7.7"
     vega-event-selector: "npm:^3.0.1"
-    vega-functions: "npm:^5.17.0"
+    vega-functions: "npm:^5.18.0"
     vega-scale: "npm:^7.4.2"
     vega-util: "npm:^1.17.3"
-  checksum: 10c0/a683ef8a49c2f56a33a0f604286d4fb15677dbab47670a096709a699f1191695621877b798e20be77b95d1dad6c76842b58cb19bac36071340451876da03ab61
+  checksum: 10c0/3ae5317912deed75f0d6e0f1ca74bb7d45f273b0881206ab1466c5c4e42789362606e99a0f72471d1ae03164c880ad5e5123cdf7061c6468f4bf82404c9201dc
   languageName: node
   linkType: hard
 
@@ -19623,19 +19623,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vega-view@npm:~5.15.0":
-  version: 5.15.0
-  resolution: "vega-view@npm:5.15.0"
+"vega-view@npm:~5.16.0":
+  version: 5.16.0
+  resolution: "vega-view@npm:5.16.0"
   dependencies:
     d3-array: "npm:^3.2.2"
     d3-timer: "npm:^3.0.1"
     vega-dataflow: "npm:^5.7.7"
     vega-format: "npm:^1.1.3"
-    vega-functions: "npm:^5.17.0"
+    vega-functions: "npm:^5.18.0"
     vega-runtime: "npm:^6.2.1"
     vega-scenegraph: "npm:^4.13.1"
     vega-util: "npm:^1.17.3"
-  checksum: 10c0/d2edb79e1f808f67e0eabe058ae804cbedc42ee0efba6c5a13b2170264be315dd2387125f3266d51231fe556da1ad4c9858b9cbdc207d0445e3c7b4eb7600bcc
+  checksum: 10c0/9944fb1bd277c67e6509f0c8e1a9f4a631367537ed3566b4cddf86a8a3e6973079e82c47dc8e1ee5b463a97f9b8fc912c276ad2b17319f5bdc087da837b8f312
   languageName: node
   linkType: hard
 
@@ -19663,9 +19663,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vega@npm:^5.32.0":
-  version: 5.32.0
-  resolution: "vega@npm:5.32.0"
+"vega@npm:^5.33.0":
+  version: 5.33.0
+  resolution: "vega@npm:5.33.0"
   dependencies:
     vega-crossfilter: "npm:~4.1.3"
     vega-dataflow: "npm:~5.7.7"
@@ -19674,12 +19674,12 @@ __metadata:
     vega-expression: "npm:~5.2.0"
     vega-force: "npm:~4.2.2"
     vega-format: "npm:~1.1.3"
-    vega-functions: "npm:~5.17.0"
+    vega-functions: "npm:~5.18.0"
     vega-geo: "npm:~4.4.3"
     vega-hierarchy: "npm:~4.1.3"
     vega-label: "npm:~1.3.1"
     vega-loader: "npm:~4.5.3"
-    vega-parser: "npm:~6.5.0"
+    vega-parser: "npm:~6.6.0"
     vega-projection: "npm:~1.6.2"
     vega-regression: "npm:~1.3.1"
     vega-runtime: "npm:~6.2.1"
@@ -19690,11 +19690,11 @@ __metadata:
     vega-transforms: "npm:~4.12.1"
     vega-typings: "npm:~1.5.0"
     vega-util: "npm:~1.17.2"
-    vega-view: "npm:~5.15.0"
+    vega-view: "npm:~5.16.0"
     vega-view-transforms: "npm:~4.6.1"
     vega-voronoi: "npm:~4.2.4"
     vega-wordcloud: "npm:~4.1.6"
-  checksum: 10c0/bcd4f9cfcd23a09b4617737cca6b8713102a8f8f8855d8bb22764284613a56659138d25501aebdac9d269c020133409ec91af8f2555bb9e51308e6e4b804c871
+  checksum: 10c0/4229162cdfe0649b75118424a87d3ec36314ec396ae440ccf44fd8e1fb72ce463697e84d1784d13809b5b13bbcfa3125f13cec2eab6ac00a19f5551baa84b218
   languageName: node
   linkType: hard
 
