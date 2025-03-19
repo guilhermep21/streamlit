@@ -34,7 +34,7 @@ def configure_sidebar_custom_theme():
     os.environ["STREAMLIT_THEME_SIDEBAR_PRIMARY_COLOR"] = "#bb5a38"
     os.environ["STREAMLIT_THEME_SIDEBAR_SECONDARY_BACKGROUND_COLOR"] = "#ecebe3"
     os.environ["STREAMLIT_THEME_SIDEBAR_SHOW_BORDER_AROUND_INPUTS"] = "True"
-    os.environ["STREAMLIT_THEME_SIDEBAR_TEXT_COLOR"] = "#3d3a2a"
+    os.environ["STREAMLIT_THEME_SIDEBAR_TEXT_COLOR"] = "#4747d4"
     os.environ["STREAMLIT_CLIENT_TOOLBAR_MODE"] = "minimal"
     yield
     del os.environ["STREAMLIT_THEME_BASE"]
@@ -58,4 +58,4 @@ def test_sidebar_custom_theme(app: Page, assert_snapshot: ImageCompareFunction):
     # Add some additional timeout to ensure that fonts can load without
     # creating flakiness:
     app.wait_for_timeout(5000)
-    assert_snapshot(app, name="sidebar_custom_theme")
+    assert_snapshot(app, name="sidebar_custom_theme", image_threshold=0.0003)
