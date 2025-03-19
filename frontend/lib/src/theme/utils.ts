@@ -157,11 +157,11 @@ export const createEmotionTheme = (
   const {
     baseFontSize,
     baseRadius,
-    showBorderAroundInputs,
+    showWidgetBorder,
     headingFont,
     bodyFont,
     codeFont,
-    showSidebarSeparator,
+    showSidebarBorder,
     ...customColors
   } = themeInput
 
@@ -216,7 +216,7 @@ export const createEmotionTheme = (
     )
   }
 
-  if (showBorderAroundInputs || widgetBorderColor) {
+  if (showWidgetBorder || widgetBorderColor) {
     // widgetBorderColor from the themeInput is deprecated. For compatibility
     // with older SiS theming, we still apply it here if provided, but we should
     // consider full removing it at some point.
@@ -282,8 +282,8 @@ export const createEmotionTheme = (
     conditionalOverrides.fontSizes.baseFontSize = baseFontSize
   }
 
-  if (notNullOrUndefined(showSidebarSeparator)) {
-    conditionalOverrides.showSidebarSeparator = showSidebarSeparator
+  if (notNullOrUndefined(showSidebarBorder)) {
+    conditionalOverrides.showSidebarBorder = showSidebarBorder
   }
 
   const fontOverrides: any = {}
