@@ -40,6 +40,7 @@ def configure_sidebar_custom_theme():
     os.environ["STREAMLIT_CLIENT_TOOLBAR_MODE"] = "minimal"
     yield
     del os.environ["STREAMLIT_THEME_BASE"]
+    del os.environ["STREAMLIT_THEME_BASE_FONT_SIZE"]
     del os.environ["STREAMLIT_THEME_BASE_RADIUS"]
     del os.environ["STREAMLIT_THEME_SHOW_BORDER_AROUND_INPUTS"]
     del os.environ["STREAMLIT_THEME_SIDEBAR_BACKGROUND_COLOR"]

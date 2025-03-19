@@ -30,7 +30,7 @@ import { CustomThemeConfig } from "@streamlit/protobuf"
 
 import Sidebar, { SidebarProps } from "./Sidebar"
 
-const createSidebarTheme = (theme: ThemeConfig): ThemeConfig => {
+export const createSidebarTheme = (theme: ThemeConfig): ThemeConfig => {
   let sidebarOverride = {}
   if (notNullOrUndefined(theme.themeInput?.sidebar)) {
     sidebarOverride = theme.themeInput.sidebar
@@ -38,24 +38,31 @@ const createSidebarTheme = (theme: ThemeConfig): ThemeConfig => {
 
   // Either use the configured background color or secondary background from main theme:
   const sidebarBackground =
-    theme.themeInput?.sidebar?.backgroundColor ??
+    theme.themeInput?.sidebar?.backgroundColor ||
     theme.emotion.colors.secondaryBg
 
-  // Eeither use the configured secondary background color or background from main theme:
+  // Either use the configured secondary background color or background from main theme:
   const secondaryBackgroundColor =
-    theme.themeInput?.sidebar?.secondaryBackgroundColor ??
+    theme.themeInput?.sidebar?.secondaryBackgroundColor ||
     theme.emotion.colors.bgColor
+
+  // Override the background and secondary background colors in sidebar overwrites:
+  sidebarOverride = {
+    ...sidebarOverride,
+    backgroundColor: sidebarBackground,
+    secondaryBackgroundColor: secondaryBackgroundColor,
+  }
+
+  const baseTheme =
+    getLuminance(sidebarBackground) > 0.5
+      ? CustomThemeConfig.BaseTheme.LIGHT
+      : CustomThemeConfig.BaseTheme.DARK
 
   return createTheme(
     "Sidebar",
     {
       ...theme.themeInput, // Use the theme props from the main theme as basis
-      base:
-        getLuminance(sidebarBackground) > 0.5
-          ? CustomThemeConfig.BaseTheme.LIGHT
-          : CustomThemeConfig.BaseTheme.DARK,
-      backgroundColor: sidebarBackground,
-      secondaryBackgroundColor: secondaryBackgroundColor,
+      base: baseTheme,
       ...sidebarOverride,
     },
     undefined, // Creating a new theme from scratch
