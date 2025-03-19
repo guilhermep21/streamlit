@@ -1059,6 +1059,38 @@ class PopulateCustomThemeMsgTest(unittest.TestCase):
         assert not new_session_msg.HasField("custom_theme")
 
     @patch("streamlit.runtime.app_session.config")
+    def test_can_specify_false_options(self, patched_config):
+        patched_config.get_options_for_section.side_effect = (
+            _mock_get_options_for_section(
+                {
+                    "backgroundColor": None,
+                    "base": None,
+                    "baseFontSize": None,
+                    "baseRadius": None,
+                    "borderColor": None,
+                    "codeFont": None,
+                    "font": None,
+                    "fontFaces": None,
+                    "headingFont": None,
+                    "linkColor": None,
+                    "primaryColor": None,
+                    "secondaryBackgroundColor": None,
+                    "showBorderAroundInputs": False,
+                    "showSidebarSeparator": None,
+                    "textColor": None,
+                    "sidebar": None,
+                }
+            )
+        )
+
+        msg = ForwardMsg()
+        new_session_msg = msg.new_session
+        app_session._populate_theme_msg(new_session_msg.custom_theme)
+
+        assert new_session_msg.HasField("custom_theme")
+        assert new_session_msg.custom_theme.show_border_around_inputs is False
+
+    @patch("streamlit.runtime.app_session.config")
     def test_can_specify_some_options(self, patched_config):
         patched_config.get_options_for_section.side_effect = (
             _mock_get_options_for_section(
