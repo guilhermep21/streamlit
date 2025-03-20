@@ -190,6 +190,7 @@ export const createEmotionTheme = (
     widgetBorderColor,
     borderColor,
     linkColor,
+    codeBackgroundColor,
   } = parsedColors
 
   const newGenericColors = { ...colors }
@@ -207,6 +208,10 @@ export const createEmotionTheme = (
   const conditionalOverrides: any = {}
 
   conditionalOverrides.colors = createEmotionColors(newGenericColors)
+
+  if (notNullOrUndefined(codeBackgroundColor)) {
+    conditionalOverrides.colors.codeBackgroundColor = codeBackgroundColor
+  }
 
   if (notNullOrUndefined(borderColor)) {
     conditionalOverrides.colors.borderColor = borderColor
@@ -245,6 +250,10 @@ export const createEmotionTheme = (
     } else if (processedBaseRadius.endsWith("rem")) {
       radiusValue = parseFloat(processedBaseRadius)
     } else if (processedBaseRadius.endsWith("px")) {
+      radiusValue = parseFloat(processedBaseRadius)
+      cssUnit = "px"
+    } else if (!isNaN(parseFloat(processedBaseRadius))) {
+      // Fallback: if the value can be parsed as a number, treat it as pixels
       radiusValue = parseFloat(processedBaseRadius)
       cssUnit = "px"
     }

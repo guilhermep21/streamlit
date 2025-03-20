@@ -451,6 +451,7 @@ class ConfigTest(unittest.TestCase):
                 "theme.borderColor",
                 "theme.showWidgetBorder",
                 "theme.linkColor",
+                "theme.codeBackgroundColor",
                 "theme.showSidebarBorder",
                 "theme.sidebar.primaryColor",
                 "theme.sidebar.backgroundColor",
@@ -463,6 +464,7 @@ class ConfigTest(unittest.TestCase):
                 "theme.sidebar.borderColor",
                 "theme.sidebar.showWidgetBorder",
                 "theme.sidebar.linkColor",
+                "theme.sidebar.codeBackgroundColor",
                 "global.appTest",
                 "global.developmentMode",
                 "global.disableWidgetStateDuplicationWarning",
@@ -628,6 +630,7 @@ class ConfigTest(unittest.TestCase):
             "codeFont": None,
             "fontFaces": None,
             "baseFontSize": None,
+            "codeBackgroundColor": None,
             "showSidebarBorder": None,
         }
         self.assertEqual(config.get_options_for_section("theme"), expected)
@@ -645,6 +648,7 @@ class ConfigTest(unittest.TestCase):
         config._set_option("theme.borderColor", "#0B4C0B", "test")
         config._set_option("theme.showWidgetBorder", True, "test")
         config._set_option("theme.linkColor", "#2EC163", "test")
+        config._set_option("theme.codeBackgroundColor", "#29361e", "test")
         config._set_option("theme.font", "Inter", "test")
         config._set_option("theme.headingFont", "Inter", "test")
         config._set_option(
@@ -675,6 +679,7 @@ class ConfigTest(unittest.TestCase):
             "font": "Inter",
             "headingFont": "Inter",
             "codeFont": "Monaspace Argon",
+            "codeBackgroundColor": "#29361e",
             "fontFaces": [
                 {
                     "family": "Inter",
@@ -702,6 +707,7 @@ class ConfigTest(unittest.TestCase):
         config._set_option("theme.sidebar.font", "Inter", "test")
         config._set_option("theme.sidebar.headingFont", "Inter", "test")
         config._set_option("theme.sidebar.codeFont", "Monaspace Argon", "test")
+        config._set_option("theme.sidebar.codeBackgroundColor", "#29361e", "test")
 
         expected = {
             "primaryColor": "#FFF000",
@@ -715,6 +721,7 @@ class ConfigTest(unittest.TestCase):
             "font": "Inter",
             "headingFont": "Inter",
             "codeFont": "Monaspace Argon",
+            "codeBackgroundColor": "#29361e",
         }
         self.assertEqual(config.get_options_for_section("theme.sidebar"), expected)
 

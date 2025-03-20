@@ -1087,6 +1087,12 @@ _create_theme_options(
 )
 
 _create_theme_options(
+    "codeBackgroundColor",
+    categories=["theme", CustomThemeCategories.SIDEBAR],
+    description="Background color used for code blocks.",
+)
+
+_create_theme_options(
     "font",
     categories=["theme", CustomThemeCategories.SIDEBAR],
     description="""

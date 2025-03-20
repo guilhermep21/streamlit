@@ -112,6 +112,7 @@ FD = FieldDescriptor
                 ("show_widget_border", FD.LABEL_OPTIONAL, FD.TYPE_BOOL),
                 ("link_color", FD.LABEL_OPTIONAL, FD.TYPE_STRING),
                 ("base_font_size", FD.LABEL_OPTIONAL, FD.TYPE_INT32),
+                ("code_background_color", FD.LABEL_OPTIONAL, FD.TYPE_STRING),
                 ("show_sidebar_border", FD.LABEL_OPTIONAL, FD.TYPE_BOOL),
                 ("sidebar", FD.LABEL_OPTIONAL, FD.TYPE_MESSAGE),
             },
