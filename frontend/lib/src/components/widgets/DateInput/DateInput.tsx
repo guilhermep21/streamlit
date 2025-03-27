@@ -246,7 +246,7 @@ function DateInput({
                   $pseudoSelected ||
                   $pseudoHighlighted ||
                   $isHovered
-                    ? `${colors.secondaryBg} !important`
+                    ? `${colors.darkenedBgMix15} !important`
                     : colors.transparent,
               },
 
