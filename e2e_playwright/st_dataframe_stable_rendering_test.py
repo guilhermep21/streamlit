@@ -26,7 +26,7 @@ def test_dataframe_renders_without_crashing(app: Page):
     # crash doesn't appear.
     # This test is safeguarding against potential regressions that
     # cause crashes as report in: https://github.com/streamlit/streamlit/issues/7949
-    # But these crashes are usually more random, thats why we run
+    # But these crashes are usually more random, that's why we run
     # it for a couple of page reloads.
     # Also, even if there are crashes, its not gurunteed that they will
     # happen in our CI environment.
