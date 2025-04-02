@@ -15,12 +15,11 @@
 from __future__ import annotations
 
 import os
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 import tornado.web
 
 from streamlit import config, file_util
-from streamlit.logger import get_logger
 from streamlit.web.server.server_util import (
     emit_endpoint_deprecation_notice,
     is_xsrf_enabled,
@@ -28,8 +27,6 @@ from streamlit.web.server.server_util import (
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
-
-_LOGGER: Final = get_logger(__name__)
 
 
 def allow_cross_origin_requests() -> bool:
