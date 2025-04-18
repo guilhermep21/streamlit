@@ -33,6 +33,9 @@ import {
   getHostSpecifiedTheme,
   HOST_COMM_VERSION,
   HostCommunicationManager,
+  isColoredLineDisplayed,
+  isEmbed,
+  isToolbarDisplayed,
   lightTheme,
   LocalStore,
   mockSessionInfoProps,
@@ -83,6 +86,16 @@ import { App, LOG, Props } from "./App"
 vi.mock("~lib/baseconsts", async () => {
   return {
     ...(await vi.importActual("~lib/baseconsts")),
+  }
+})
+
+vi.mock("@streamlit/lib", async () => {
+  const actualLib = await vi.importActual("@streamlit/lib")
+  return {
+    ...actualLib,
+    isEmbed: vi.fn(),
+    isToolbarDisplayed: vi.fn(),
+    isColoredLineDisplayed: vi.fn(),
   }
 })
 
@@ -604,23 +617,6 @@ describe("App", () => {
 
       expect(window.location.reload).not.toHaveBeenCalled()
     })
-  })
-
-  it("hides the top bar if hideTopBar === true", () => {
-    renderApp(getProps())
-    // hideTopBar is true by default
-
-    expect(screen.queryByTestId("stStatusWidget")).not.toBeInTheDocument()
-    expect(screen.queryByTestId("stToolbarActions")).not.toBeInTheDocument()
-  })
-
-  it("shows the top bar if hideTopBar === false", () => {
-    renderApp(getProps())
-
-    sendForwardMessage("newSession", NEW_SESSION_JSON)
-
-    expect(screen.getByTestId("stStatusWidget")).toBeInTheDocument()
-    expect(screen.getByTestId("stToolbarActions")).toBeInTheDocument()
   })
 
   it("sends updateReport to our metrics manager", () => {
@@ -1232,6 +1228,87 @@ describe("App", () => {
       })
 
       expect(document.title).toBe("some title")
+    })
+  })
+
+  describe("Header", () => {
+    afterEach(() => {
+      vi.mocked(isEmbed).mockReset()
+      vi.mocked(isToolbarDisplayed).mockReset()
+      vi.mocked(isColoredLineDisplayed).mockReset()
+
+      vi.clearAllMocks()
+    })
+
+    it("renders with status widget, toolbar, and main menu by default", () => {
+      renderApp(getProps())
+      sendForwardMessage("newSession", NEW_SESSION_JSON)
+
+      expect(screen.getByTestId("stHeader")).toBeVisible()
+      expect(screen.getByTestId("stToolbar")).toBeVisible()
+      expect(screen.getByTestId("stStatusWidget")).toBeVisible()
+      expect(screen.getByTestId("stMainMenu")).toBeVisible()
+    })
+
+    it("hides the top bar if hideTopBar === true", () => {
+      renderApp(getProps())
+      // hideTopBar is true by default
+
+      expect(screen.queryByTestId("stStatusWidget")).toBeNull()
+      expect(screen.queryByTestId("stToolbarActions")).toBeNull()
+    })
+
+    it("shows the top bar if hideTopBar === false", () => {
+      renderApp(getProps())
+
+      sendForwardMessage("newSession", NEW_SESSION_JSON)
+
+      expect(screen.getByTestId("stStatusWidget")).toBeVisible()
+      expect(screen.getByTestId("stToolbarActions")).toBeVisible()
+    })
+
+    it("does not render when app embedded & both showToolbar and showColoredLine false", () => {
+      // Mock returns of util functions
+      vi.mocked(isEmbed).mockReturnValue(true)
+      vi.mocked(isToolbarDisplayed).mockReturnValue(false)
+      vi.mocked(isColoredLineDisplayed).mockReturnValue(false)
+
+      renderApp(getProps())
+      sendForwardMessage("newSession", NEW_SESSION_JSON)
+
+      // Header/main menu should not render
+      expect(screen.queryByTestId("stHeader")).toBeNull()
+      expect(screen.queryByTestId("stMainMenu")).toBeNull()
+    })
+
+    it("renders when app embedded & only showToolbar is true", () => {
+      // Mock returns of util functions
+      vi.mocked(isEmbed).mockReturnValue(true)
+      vi.mocked(isToolbarDisplayed).mockReturnValue(true)
+      vi.mocked(isColoredLineDisplayed).mockReturnValue(false)
+
+      renderApp(getProps())
+      sendForwardMessage("newSession", NEW_SESSION_JSON)
+
+      // Header/main menu should render
+      expect(screen.getByTestId("stHeader")).toBeVisible()
+      expect(screen.getByTestId("stMainMenu")).toBeVisible()
+    })
+
+    it("renders when app embedded & only showColoredLine is true", () => {
+      // Mock returns of util functions
+      vi.mocked(isEmbed).mockReturnValue(true)
+      vi.mocked(isToolbarDisplayed).mockReturnValue(false)
+      vi.mocked(isColoredLineDisplayed).mockReturnValue(true)
+
+      renderApp(getProps())
+      sendForwardMessage("newSession", NEW_SESSION_JSON)
+
+      // Header and decoration should render, but not MainMenu since toolbar is not visible
+      expect(screen.getByTestId("stHeader")).toBeVisible()
+      expect(screen.getByTestId("stDecoration")).toBeVisible()
+      // MainMenu should not exist since showToolbar is false
+      expect(screen.queryByTestId("stMainMenu")).not.toBeInTheDocument()
     })
   })
 
@@ -2328,6 +2405,8 @@ describe("App", () => {
     })
 
     it("triggers rerunScript with is_auto_rerun set to true", () => {
+      // Since we mock the isEmbed function, we need to set its return value
+      vi.mocked(isEmbed).mockReturnValue(false)
       renderApp(getProps())
 
       const connectionManager = getMockConnectionManager()
@@ -2875,8 +2954,9 @@ describe("App", () => {
     })
 
     it("changes scriptRunState and triggers stopScript when STOP_SCRIPT message has been received", () => {
+      // Since we mock the isEmbed function, we need to set its return value
+      vi.mocked(isEmbed).mockReturnValue(false)
       const hostCommunicationMgr = prepareHostCommunicationManager()
-
       const connectionManager = getMockConnectionManager(true)
 
       // Mark the script as running
@@ -3116,6 +3196,8 @@ describe("App", () => {
     })
 
     it("responds to page change request messages", () => {
+      // Since we mock the isEmbed function, we need to set its return value
+      vi.mocked(isEmbed).mockReturnValue(false)
       prepareHostCommunicationManager()
 
       const connectionManager = getMockConnectionManager(true)
