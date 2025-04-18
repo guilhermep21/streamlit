@@ -22,6 +22,7 @@ const TOP_DISTANCE = "-2.4rem"
 
 export interface StyledToolbarWrapperProps {
   locked?: boolean
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
   target?: StyledComponent<any, any, any>
 }
 

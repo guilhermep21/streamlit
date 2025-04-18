@@ -131,6 +131,7 @@ vi.mock("@streamlit/connection", async () => {
   }
 })
 vi.mock("~lib/SessionInfo", async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
   const actualModule = await vi.importActual<any>("~lib/SessionInfo")
 
   const MockedClass = vi.fn().mockImplementation(() => {
@@ -149,6 +150,7 @@ vi.mock("~lib/SessionInfo", async () => {
 })
 
 vi.mock("~lib/hostComm/HostCommunicationManager", async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
   const actualModule = await vi.importActual<any>(
     "~lib/hostComm/HostCommunicationManager"
   )
@@ -168,6 +170,7 @@ vi.mock("~lib/hostComm/HostCommunicationManager", async () => {
 })
 
 vi.mock("~lib/WidgetStateManager", async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
   const actualModule = await vi.importActual<any>("~lib/WidgetStateManager")
 
   const MockedClass = vi.fn().mockImplementation((...props) => {
@@ -185,6 +188,7 @@ vi.mock("~lib/WidgetStateManager", async () => {
 })
 
 vi.mock("@streamlit/app/src/MetricsManager", async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
   const actualModule = await vi.importActual<any>(
     "@streamlit/app/src/MetricsManager"
   )
@@ -202,6 +206,7 @@ vi.mock("@streamlit/app/src/MetricsManager", async () => {
 })
 
 vi.mock("~lib/FileUploadClient", async () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
   const actualModule = await vi.importActual<any>("~lib/FileUploadClient")
 
   const MockedClass = vi.fn().mockImplementation((...props) => {
@@ -317,6 +322,7 @@ function renderApp(props: Props): RenderResult {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
 function getStoredValue<T>(Type: any): T {
   return Type.mock.results[Type.mock.results.length - 1].value
 }
@@ -330,6 +336,7 @@ function getMockConnectionManager(isConnected = false): ConnectionManager {
   return connectionManager
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
 function getMockConnectionManagerProp(propName: string): any {
   // @ts-expect-error
   return getStoredValue<ConnectionManager>(ConnectionManager).props[propName]
@@ -1547,6 +1554,7 @@ describe("App", () => {
   // Using this to test the functionality provided through streamlit.experimental_set_query_params.
   // Please see https://github.com/streamlit/streamlit/issues/2887 for more context on this.
   describe("App.handlePageInfoChanged", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
     let pushStateSpy: any
 
     beforeEach(() => {
@@ -2866,6 +2874,7 @@ describe("App", () => {
       return hostCommunicationMgr
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
     function fireWindowPostMessage(message: any): void {
       fireEvent(
         window,
@@ -3607,6 +3616,7 @@ describe("App", () => {
   })
 
   describe("page change URL handling", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
     let pushStateSpy: any
 
     beforeEach(() => {
