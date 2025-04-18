@@ -490,7 +490,7 @@ export class App extends PureComponent<Props, State> {
     this.isInitializingConnectionManager = false
   }
 
-  componentDidMount(): void {
+  override componentDidMount(): void {
     // Initialize connection manager here, to avoid
     // "Can't call setState on a component that is not yet mounted." error.
     this.initializeConnectionManager()
@@ -537,7 +537,7 @@ export class App extends PureComponent<Props, State> {
     window.addEventListener("popstate", this.onHistoryChange, false)
   }
 
-  componentDidUpdate(
+  override componentDidUpdate(
     prevProps: Readonly<Props>,
     prevState: Readonly<State>
   ): void {
@@ -568,7 +568,7 @@ export class App extends PureComponent<Props, State> {
     }
   }
 
-  componentWillUnmount(): void {
+  override componentWillUnmount(): void {
     // Needing to disconnect our connection manager + websocket connection is
     // only needed here to handle the case in dev mode where react hot-reloads
     // the client as a result of a source code change. In this scenario, the
@@ -1945,7 +1945,7 @@ export class App extends PureComponent<Props, State> {
     }
   }
 
-  render(): JSX.Element {
+  override render(): JSX.Element {
     const {
       allowRunOnSave,
       connectionState,

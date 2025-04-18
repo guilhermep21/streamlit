@@ -218,7 +218,7 @@ class StreamlitLibExample extends PureComponent<Props, State> {
     }))
   }
 
-  public render = (): ReactElement => {
+  public override render = (): ReactElement => {
     // This example doesn't involve a sidebar, so our only root blockNode
     // is `elements.main`.
     const blockNode = this.state.elements.main
