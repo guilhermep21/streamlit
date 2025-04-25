@@ -97,7 +97,7 @@ repos:
           - --comment-style
           - "/**| *| */"
           - --license-filepath
-          - scripts/license-template.txt
+          - scripts/assets/license-template.txt
           - --fuzzy-match-generates-todo
         exclude: |
           (?x)
@@ -115,7 +115,7 @@ repos:
           - --comment-style
           - "/**!| *| */"
           - --license-filepath
-          - scripts/license-template.txt
+          - scripts/assets/license-template.txt
           - --fuzzy-match-generates-todo
         exclude: |
           (?x)
@@ -130,7 +130,7 @@ repos:
           - --comment-style
           - "|#|"
           - --license-filepath
-          - scripts/license-template.txt
+          - scripts/assets/license-template.txt
           - --fuzzy-match-generates-todo
         exclude: |
           (?x)
@@ -144,7 +144,7 @@ repos:
           - --comment-style
           - "|#|"
           - --license-filepath
-          - scripts/license-template.txt
+          - scripts/assets/license-template.txt
           - --fuzzy-match-generates-todo
         exclude: |
           (?x)
@@ -158,7 +158,7 @@ repos:
           - --comment-style
           - "<!--||-->"
           - --license-filepath
-          - scripts/license-template.txt
+          - scripts/assets/license-template.txt
           - --fuzzy-match-generates-todo
         exclude: |
           (?x)
