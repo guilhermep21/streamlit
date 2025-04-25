@@ -53,6 +53,7 @@ select = [
   "LOG",    # Checks for issues using the standard library logging module.
   "NPY",    # Linting rules for numpy
   "PD",     # Opinionated linting for pandas.
+  "PERF",   # Rules to prevent performance anti-patterns.
   "PGH",    # Pygrep hook rules.
   "PIE",    # Rules to prevent unnecessary code logic.
   "PLC",    # pycodestyle conventions
@@ -108,12 +109,12 @@ exclude = [
 ]
 
 [lint.per-file-ignores]
-"e2e_playwright/**" = ["T20", "B018", "PD"]
+"e2e_playwright/**" = ["T20", "B018", "PD", "PERF"]
 "lib/streamlit/__init__.py" = ["E402", "PLC0414"]
 "lib/setup.py" = ["INP"]
-"lib/tests/**" = ["PD", "D", "INP"]
-"scripts/**" = ["T20", "INP"]
-".github/**" = ["T20", "INP"]
+"lib/tests/**" = ["PD", "D", "INP", "PERF"]
+"scripts/**" = ["T20", "INP", "PERF"]
+".github/**" = ["T20", "INP", "PERF"]
 
 [lint.flake8-tidy-imports]
 # Disallow all relative imports.

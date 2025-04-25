@@ -110,7 +110,7 @@ class MultiSelectSerde(Generic[T]):
             try:
                 option_index = self.options.index(v)
                 values.append(self.formatted_options[option_index])
-            except ValueError:
+            except ValueError:  # noqa: PERF203
                 # at this point we know that v is a string, otherwise
                 # it would have been found in the options
                 values.append(cast("str", v))
@@ -129,7 +129,7 @@ class MultiSelectSerde(Generic[T]):
             try:
                 option_index = self.formatted_options.index(v)
                 values.append(self.options[option_index])
-            except ValueError:
+            except ValueError:  # noqa: PERF203
                 values.append(v)
         return values
 
