@@ -3044,7 +3044,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-compiler: "npm:^19.0.0-beta-40c6c23-20250301"
     eslint-plugin-react-hooks: "npm:^5.2.0"
-    eslint-plugin-streamlit-custom: "file:../eslint-plugin-streamlit-custom"
+    eslint-plugin-streamlit-custom: "workspace:^"
     eslint-plugin-testing-library: "npm:^7.1.1"
     eslint-plugin-vitest: "npm:^0.5.4"
     hoist-non-react-statics: "npm:^3.3.2"
@@ -3177,7 +3177,7 @@ __metadata:
     deck.gl: "npm:^9.1.11"
     dompurify: "npm:^3.2.5"
     eslint: "npm:^8.33.0"
-    eslint-plugin-streamlit-custom: "file:../eslint-plugin-streamlit-custom"
+    eslint-plugin-streamlit-custom: "workspace:^"
     eslint-plugin-vitest: "npm:^0.5.4"
     fzy.js: "npm:^0.4.1"
     hoist-non-react-statics: "npm:^3.3.2"
@@ -9770,19 +9770,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-streamlit-custom@file:../eslint-plugin-streamlit-custom::locator=%40streamlit%2Fapp%40workspace%3Aapp":
-  version: 1.0.0
-  resolution: "eslint-plugin-streamlit-custom@file:../eslint-plugin-streamlit-custom#../eslint-plugin-streamlit-custom::hash=8326b0&locator=%40streamlit%2Fapp%40workspace%3Aapp"
-  checksum: 10c0/95c60220f91f17b9ccfe5ad3dd0e7c8f27ee51393151b90990103108af32e2213c59ded8d786fc2252b1ed499b75e7f0b73061c5a25c1517611eb2eb9a22ef6d
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-streamlit-custom@file:../eslint-plugin-streamlit-custom::locator=%40streamlit%2Flib%40workspace%3Alib":
-  version: 1.0.0
-  resolution: "eslint-plugin-streamlit-custom@file:../eslint-plugin-streamlit-custom#../eslint-plugin-streamlit-custom::hash=8326b0&locator=%40streamlit%2Flib%40workspace%3Alib"
-  checksum: 10c0/95c60220f91f17b9ccfe5ad3dd0e7c8f27ee51393151b90990103108af32e2213c59ded8d786fc2252b1ed499b75e7f0b73061c5a25c1517611eb2eb9a22ef6d
-  languageName: node
-  linkType: hard
+"eslint-plugin-streamlit-custom@workspace:^, eslint-plugin-streamlit-custom@workspace:eslint-plugin-streamlit-custom":
+  version: 0.0.0-use.local
+  resolution: "eslint-plugin-streamlit-custom@workspace:eslint-plugin-streamlit-custom"
+  languageName: unknown
+  linkType: soft
 
 "eslint-plugin-testing-library@npm:^7.1.1":
   version: 7.1.1
