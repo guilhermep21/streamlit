@@ -128,8 +128,8 @@ class SelectSliderMixin:
     # The overload-overlap error given by mypy here stems from
     # the fact that
     #
-    #   opt:List[object] = [1, 2, "3"]
-    #   select_slider("foo", options=opt, value=[1, 2])
+    # > opt:List[object] = [1, 2, "3"]
+    # > select_slider("foo", options=opt, value=[1, 2])
     #
     # matches both overloads; "opt" matches
     # OptionsSequence[T] in each case, binding T to object.

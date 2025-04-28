@@ -335,8 +335,8 @@ def run(
         await server.stopped
 
     # Run the server. This function will not return until the server is shut down.
-    # FIX RuntimeError: asyncio.run() cannot be called from a running event loop on Python 3.10.16
-    # asyncio.run(run_server())
+    # FIX RuntimeError: asyncio.run() cannot be called from a running event loop
+    # asyncio.run(run_server())  # noqa: ERA001
 
     # Define a main function to handle the event loop logic
     async def main():

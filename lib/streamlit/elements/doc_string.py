@@ -149,18 +149,14 @@ def _marshall(doc_string_proto: DocStringProto, obj: Any) -> None:
 
 def _get_name(obj):
     # Try to get the fully-qualified name of the object.
-    # For example:
-    #   st.help(bar.Baz(123))
-    #
-    #   The name is bar.Baz
+    # For example: st.help(bar.Baz(123))
+    #    The name is bar.Baz
     name = getattr(obj, "__qualname__", None)
     if name:
         return name
 
     # Try to get the name of the object.
-    # For example:
-    #   st.help(bar.Baz(123))
-    #
+    # For example: st.help(bar.Baz(123))
     #   The name is Baz
     return getattr(obj, "__name__", None)
 
@@ -174,10 +170,6 @@ def _get_signature(obj):
         return None
 
     sig = ""
-
-    # TODO: Can we replace below with this?
-    # with contextlib.suppress(ValueError):
-    #     sig = str(inspect.signature(obj))
 
     try:
         sig = str(inspect.signature(obj))
@@ -248,20 +240,20 @@ def _get_variable_name_from_code_str(code):
 
     # Example:
     #
-    # tree = Module(
-    #   body=[
-    #     Expr(
-    #       value=Call(
-    #         args=[
-    #           Name(id='the variable name')
-    #         ],
-    #         keywords=[
-    #           ???
-    #         ],
-    #       )
-    #     )
-    #   ]
-    # )
+    # > tree = Module(
+    # >   body=[
+    # >     Expr(
+    # >       value=Call(
+    # >         args=[
+    # >           Name(id='the variable name')
+    # >         ],
+    # >         keywords=[
+    # >           ???
+    # >         ],
+    # >       )
+    # >     )
+    # >   ]
+    # > )
 
     # Check if this is an magic call (i.e. it's not st.help or st.write).
     # If that's the case, just clean it up and return it.

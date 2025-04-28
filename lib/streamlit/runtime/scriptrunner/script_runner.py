@@ -265,7 +265,7 @@ class ScriptRunner:
         # _maybe_handle_execution_control_request.
         self._execing = False
 
-        # This is initialized in start()
+        # This is initialized in the start() method
         self._script_thread: threading.Thread | None = None
 
     def __repr__(self) -> str:
