@@ -662,6 +662,20 @@ _create_option(
 
 _create_section("server", "Settings for the Streamlit server")
 
+
+_create_option(
+    "server.folderWatchList",
+    description="""
+        List of folders to watch for changes.
+
+        By default, Streamlit watches for files in the current working directory.
+        Use this parameter to specify additional folders to watch.
+
+        Note: This is a list of absolute paths.
+    """,
+    default_val=[],
+)
+
 _create_option(
     "server.folderWatchBlacklist",
     description="""

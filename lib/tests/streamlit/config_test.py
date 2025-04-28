@@ -525,6 +525,7 @@ class ConfigTest(unittest.TestCase):
                 "server.enableWebsocketCompression",
                 "server.enableXsrfProtection",
                 "server.fileWatcherType",
+                "server.folderWatchList",
                 "server.folderWatchBlacklist",
                 "server.headless",
                 "server.address",
