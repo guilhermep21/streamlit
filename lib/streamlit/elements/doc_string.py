@@ -28,7 +28,7 @@ from streamlit.proto.DocString_pb2 import DocString as DocStringProto
 from streamlit.proto.DocString_pb2 import Member as MemberProto
 from streamlit.runtime.metrics_util import gather_metrics
 from streamlit.runtime.scriptrunner.script_runner import (
-    __file__ as SCRIPTRUNNER_FILENAME,
+    __file__ as SCRIPTRUNNER_FILENAME,  # noqa: N812
 )
 from streamlit.runtime.secrets import Secrets
 from streamlit.string_util import is_mem_address_str
