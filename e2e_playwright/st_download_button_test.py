@@ -64,7 +64,7 @@ def test_download_button_widget_rendering(
     assert_snapshot(download_buttons.nth(11), name="st_download_button-help")
 
 
-def test_show_tooltip_on_hover(app: Page, assert_snapshot: ImageCompareFunction):
+def test_show_tooltip_on_hover(app: Page):
     download_button = app.get_by_test_id("stDownloadButton").nth(5)
     download_button.hover()
     expect(app.get_by_test_id("stTooltipContent")).to_have_text("Example help text")

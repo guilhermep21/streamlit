@@ -484,7 +484,7 @@ class ScriptRunner:
                 rerun_data.page_script_hash, rerun_data.page_name
             )
             active_script = self._pages_manager.get_initial_active_script(
-                rerun_data.page_script_hash, rerun_data.page_name
+                rerun_data.page_script_hash
             )
             main_page_info = self._pages_manager.get_main_page()
 

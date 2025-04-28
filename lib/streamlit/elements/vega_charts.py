@@ -227,7 +227,7 @@ class VegaLiteStateSerde:
 
     selection_parameters: Sequence[str]
 
-    def deserialize(self, ui_value: str | None, widget_id: str = "") -> VegaLiteState:
+    def deserialize(self, ui_value: str | None) -> VegaLiteState:
         empty_selection_state: VegaLiteState = {
             "selection": AttributeDictionary(
                 # Initialize the select state with empty dictionaries for each selection parameter.

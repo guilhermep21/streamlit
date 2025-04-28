@@ -34,6 +34,7 @@ line-ending = "lf"
 
 [lint]
 select = [
+  "ARG",    # Checks for unused arguments.
   "ASYNC",  # Opinionated linting for asyncio.
   "B",      # flake8-bugbear
   "C4",     # Helps you write better list/set/dict comprehensions.
@@ -116,7 +117,7 @@ exclude = [
 "e2e_playwright/**" = ["T20", "B018", "PD", "PERF", "N999"]
 "lib/streamlit/__init__.py" = ["E402", "PLC0414"]
 "lib/setup.py" = ["INP"]
-"lib/tests/**" = ["PD", "D", "INP", "PERF", "N"]
+"lib/tests/**" = ["PD", "D", "INP", "PERF", "N", "ARG"]
 "scripts/**" = ["T20", "INP", "PERF"]
 ".github/**" = ["T20", "INP", "PERF"]
 
@@ -140,3 +141,7 @@ max-line-length = 120
 [lint.flake8-comprehensions]
 # Allow dict calls that make use of keyword arguments (e.g., dict(a=1, b=2)).
 allow-dict-calls-with-keyword-arguments = true
+
+[lint.flake8-unused-arguments]
+# Ignore unused variadic argument, like *args and **kwargs.
+ignore-variadic-names = true

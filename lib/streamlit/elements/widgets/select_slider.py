@@ -78,11 +78,7 @@ class SelectSliderSerde(Generic[T]):
     def serialize(self, v: object) -> list[int]:
         return self._as_index_list(v)
 
-    def deserialize(
-        self,
-        ui_value: list[int] | None,
-        widget_id: str = "",
-    ) -> T | tuple[T, T]:
+    def deserialize(self, ui_value: list[int] | None) -> T | tuple[T, T]:
         if not ui_value:
             # Widget has not been used; fallback to the original value,
             ui_value = self.value

@@ -39,7 +39,7 @@ MAX_APP_STATIC_FOLDER_SIZE = 1 * 1024 * 1024 * 1024  # 1 GB
 def _set_up_signal_handler(server: Server) -> None:
     _LOGGER.debug("Setting up signal handler")
 
-    def signal_handler(signal_number, stack_frame):
+    def signal_handler(signal_number, stack_frame):  # noqa: ARG001
         # The server will shut down its threads and exit its loop.
         server.stop()
 
