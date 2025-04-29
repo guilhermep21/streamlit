@@ -97,12 +97,12 @@ def _validate_image_format_string(
     - For all other strings, return "PNG" if the image has an alpha channel,
     "GIF" if the image is a GIF, and "JPEG" otherwise.
     """
-    format = format.upper()
-    if format in {"JPEG", "PNG"}:
-        return cast("ImageFormat", format)
+    img_format = format.upper()
+    if img_format in {"JPEG", "PNG"}:
+        return cast("ImageFormat", img_format)
 
     # We are forgiving on the spelling of JPEG
-    if format == "JPG":
+    if img_format == "JPG":
         return "JPEG"
 
     pil_image: PILImage
@@ -149,9 +149,9 @@ def _np_array_to_bytes(array: npt.NDArray[Any], output_format: str = "JPEG") -> 
     from PIL import Image
 
     img = Image.fromarray(array.astype(np.uint8))
-    format = _validate_image_format_string(img, output_format)
+    img_format = _validate_image_format_string(img, output_format)
 
-    return _pil_to_bytes(img, format)
+    return _pil_to_bytes(img, img_format)
 
 
 def _verify_np_shape(array: npt.NDArray[Any]) -> npt.NDArray[Any]:
@@ -298,8 +298,8 @@ def image_to_url(
 
     # PIL Images
     elif isinstance(image, (ImageFile.ImageFile, Image.Image)):
-        format = _validate_image_format_string(image, output_format)
-        image_data = _pil_to_bytes(image, format)
+        img_format = _validate_image_format_string(image, output_format)
+        image_data = _pil_to_bytes(image, img_format)
 
     # BytesIO
     # Note: This doesn't support SVG. We could convert to png (cairosvg.svg2png)

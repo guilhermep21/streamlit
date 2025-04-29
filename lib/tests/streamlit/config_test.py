@@ -953,10 +953,10 @@ class ConfigLoadingTest(unittest.TestCase):
 
         global_open = mock_open(read_data=global_config)
         local_open = mock_open(read_data=local_config)
-        open = mock_open()
-        open.side_effect = [global_open.return_value, local_open.return_value]
+        file_open = mock_open()
+        file_open.side_effect = [global_open.return_value, local_open.return_value]
 
-        open_patch = patch("streamlit.config.open", open)
+        open_patch = patch("streamlit.config.open", file_open)
         # patch streamlit.*.os.* instead of os.* for py35 compat
         makedirs_patch = patch("streamlit.config.os.makedirs")
         makedirs_patch.return_value = True
@@ -1001,10 +1001,10 @@ class ConfigLoadingTest(unittest.TestCase):
 
         global_open = mock_open(read_data=global_config)
         local_open = mock_open(read_data=local_config)
-        open = mock_open()
-        open.side_effect = [global_open.return_value, local_open.return_value]
+        file_open = mock_open()
+        file_open.side_effect = [global_open.return_value, local_open.return_value]
 
-        open_patch = patch("streamlit.config.open", open)
+        open_patch = patch("streamlit.config.open", file_open)
         # patch streamlit.*.os.* instead of os.* for py35 compat
         makedirs_patch = patch("streamlit.config.os.makedirs")
         makedirs_patch.return_value = True

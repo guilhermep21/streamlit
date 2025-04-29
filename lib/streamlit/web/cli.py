@@ -146,7 +146,7 @@ def main(log_level="info"):
 
 
 @main.command("help")
-def help():
+def help():  # noqa: A001
     """Print this help message."""
     # We use _get_command_line_as_string to run some error checks but don't do
     # anything with its return value.
