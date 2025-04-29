@@ -61,6 +61,7 @@ select = [
   "PIE",    # Rules to prevent unnecessary code logic.
   "PLC",    # pycodestyle conventions
   "PLE",    # Pylint error rules.
+  "PLR",    # Pylint refactoring rules.
   "PLW",    # Pylint warning rules
   "PYI",    # Linting rules for type annotations.
   "Q",      # Linting rules for quotes.
@@ -105,6 +106,14 @@ ignore = [
   "D202",    # Checks for no-blank line after docstring.
   "FIX002",  # Checks todo comments (which we want to allow).
   "PGH003",  # Checks for blanket type ignore.
+  "PLR2004", # Checks for numerical values that could be put into a constant.
+  "PLR0904", # Checks for classes with too many public methods.
+  "PLR0911", # Checks for functions with too many return statements.
+  "PLR0912", # Checks for functions with too many branches.
+  "PLR0913", # Checks for functions with too many arguments.
+  "PLR0914", # Checks for functions with too many local variables.
+  "PLR0915", # Checks for functions with too many statements.
+  "PLR0916", # Checks for too many boolean expressions in if statements.
   "N806",    # Checks for non-lowercased variable names in functions.
   "N818",    # Checks for Error suffix for exceptions.
 ]

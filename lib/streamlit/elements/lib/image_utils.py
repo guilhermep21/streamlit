@@ -216,16 +216,13 @@ def _clip_image(image: npt.NDArray[Any], clamp: bool) -> npt.NDArray[Any]:
     if issubclass(image.dtype.type, np.floating):
         if clamp:
             data = np.clip(image, 0, 1.0)
-        else:
-            if np.amin(image) < 0.0 or np.amax(image) > 1.0:
-                raise RuntimeError("Data is outside [0.0, 1.0] and clamp is not set.")
+        elif np.amin(image) < 0.0 or np.amax(image) > 1.0:
+            raise RuntimeError("Data is outside [0.0, 1.0] and clamp is not set.")
         data = data * 255
-    else:
-        if clamp:
-            data = np.clip(image, 0, 255)
-        else:
-            if np.amin(image) < 0 or np.amax(image) > 255:
-                raise RuntimeError("Data is outside [0, 255] and clamp is not set.")
+    elif clamp:
+        data = np.clip(image, 0, 255)
+    elif np.amin(image) < 0 or np.amax(image) > 255:
+        raise RuntimeError("Data is outside [0, 255] and clamp is not set.")
     return data
 
 
@@ -430,15 +427,17 @@ def marshall_images(
 
     proto_imgs.width = int(width)
     # Each image in an image list needs to be kept track of at its own coordinates.
-    for coord_suffix, (image, caption) in enumerate(zip(images, captions)):
+    for coord_suffix, (single_image, single_caption) in enumerate(
+        zip(images, captions)
+    ):
         proto_img = proto_imgs.imgs.add()
-        if caption is not None:
-            proto_img.caption = str(caption)
+        if single_caption is not None:
+            proto_img.caption = str(single_caption)
 
         # We use the index of the image in the input image list to identify this image inside
         # MediaFileManager. For this, we just add the index to the image's "coordinates".
         image_id = "%s-%i" % (coordinates, coord_suffix)
 
         proto_img.url = image_to_url(
-            image, width, clamp, channels, output_format, image_id
+            single_image, width, clamp, channels, output_format, image_id
         )
