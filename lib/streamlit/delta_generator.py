@@ -585,7 +585,8 @@ def _check_nested_element_violation(
         num_of_parent_columns = dg._count_num_of_parent_columns(ancestor_block_types)
         if dg._root_container == RootContainer.SIDEBAR and num_of_parent_columns > 0:
             raise StreamlitAPIException(
-                "Columns cannot be placed inside other columns in the sidebar. This is only possible in the main area of the app."
+                "Columns cannot be placed inside other columns in the sidebar. "
+                "This is only possible in the main area of the app."
             )
         if num_of_parent_columns > 1:
             raise StreamlitAPIException(

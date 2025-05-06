@@ -199,7 +199,8 @@ class StreamlitInvalidSidebarStateError(LocalizableStreamlitException):
 
     def __init__(self, initial_sidebar_state: str):
         super().__init__(
-            '`initial_sidebar_state` must be `"auto"` or `"expanded"` or `"collapsed"` (got `"{initial_sidebar_state}"`)',
+            '`initial_sidebar_state` must be `"auto"` or `"expanded"` or '
+            '`"collapsed"` (got `"{initial_sidebar_state}"`)',
             initial_sidebar_state=initial_sidebar_state,
         )
 
@@ -413,7 +414,9 @@ class StreamlitFragmentWidgetsNotAllowedOutsideError(LocalizableStreamlitExcepti
 
 
 class StreamlitInvalidFormCallbackError(LocalizableStreamlitException):
-    """Exception raised a `on_change` callback is set on any element in a form except for the `st.form_submit_button`."""
+    """Exception raised a `on_change` callback is set on any element in a form except for
+    the `st.form_submit_button`.
+    """
 
     def __init__(self):
         super().__init__(

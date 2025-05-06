@@ -17,7 +17,10 @@ import numpy as np
 
 import streamlit as st
 
-LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+LOREM_IPSUM = (
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
+    "incididunt ut labore et dolore magna aliqua."
+)
 
 BLACK_IMG = np.repeat(0, 601350).reshape(633, 950)
 

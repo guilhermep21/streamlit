@@ -350,8 +350,9 @@ class MediaMixin:
         `video subtitles feature demo <https://doc-video-subtitle-inputs.streamlit.app/>`_.
 
         .. note::
-           Some videos may not display if they are encoded using MP4V (which is an export option in OpenCV), as this codec is
-           not widely supported by browsers. Converting your video to H.264 will allow the video to be displayed in Streamlit.
+           Some videos may not display if they are encoded using MP4V (which is an export option in OpenCV),
+           as this codec is not widely supported by browsers. Converting your video to H.264 will allow
+           the video to be displayed in Streamlit.
            See this `StackOverflow post <https://stackoverflow.com/a/49535220/2394542>`_ or this
            `Streamlit forum post <https://discuss.streamlit.io/t/st-video-doesnt-show-opencv-generated-mp4/3193/2>`_
            for more information.
@@ -504,8 +505,9 @@ def marshall_video(
     subtitles: str, dict, or io.BytesIO
         Optional subtitle data for the video, supporting several input types:
         - None (default): No subtitles.
-        - A string: File path to a subtitle file in '.vtt' or '.srt' formats, or the raw content of subtitles conforming to these formats.
-            If providing raw content, the string must adhere to the WebVTT or SRT format specifications.
+        - A string: File path to a subtitle file in '.vtt' or '.srt' formats, or the raw content
+            of subtitles conforming to these formats. If providing raw content, the string must
+            adhere to the WebVTT or SRT format specifications.
         - A dictionary: Pairs of labels and file paths or raw subtitle content in '.vtt' or '.srt' formats.
             Enables multiple subtitle tracks. The label will be shown in the video player.
             Example: {'English': 'path/to/english.vtt', 'French': 'path/to/french.srt'}

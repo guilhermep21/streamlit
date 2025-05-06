@@ -269,7 +269,8 @@ class SnowflakeConnection(BaseConnection["InternalSnowflakeConnection"]):
                     "Missing Snowflake connection configuration. "
                     "Did you forget to set this in `secrets.toml`, a Snowflake configuration file, "
                     "or as kwargs to `st.connection`? "
-                    "See the [SnowflakeConnection configuration documentation](https://docs.streamlit.io/st.connections.snowflakeconnection-configuration) "
+                    "See the [SnowflakeConnection configuration documentation]"
+                    "(https://docs.streamlit.io/st.connections.snowflakeconnection-configuration) "
                     "for more details and examples."
                 )
             raise
