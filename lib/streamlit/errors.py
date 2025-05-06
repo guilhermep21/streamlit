@@ -49,7 +49,7 @@ class FragmentStorageKeyError(Error, KeyError):
     pass
 
 
-class FragmentHandledException(Exception):
+class FragmentHandledException(Exception):  # noqa: N818
     """An exception that is raised by the fragment
     when it has handled the exception itself.
     """
@@ -57,15 +57,15 @@ class FragmentHandledException(Exception):
     pass
 
 
-class NoStaticFiles(Error):
+class NoStaticFiles(Error):  # noqa: N818
     pass
 
 
-class NoSessionContext(Error):
+class NoSessionContext(Error):  # noqa: N818
     pass
 
 
-class MarkdownFormattedException(Error):
+class MarkdownFormattedException(Error):  # noqa: N818
     """Exceptions with Markdown in their description.
 
     Instances of this class can use markdown in their messages, which will get

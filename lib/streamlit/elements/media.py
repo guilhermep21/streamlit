@@ -453,8 +453,7 @@ def _marshall_av_media(
         read_data = data.read()
         if read_data is None:
             return
-        else:
-            data_or_filename = read_data
+        data_or_filename = read_data
     elif type_util.is_type(data, "numpy.ndarray"):
         data_or_filename = data.tobytes()
     else:
@@ -621,7 +620,7 @@ def _parse_start_time_end_time(
     try:
         maybe_start_time = time_to_seconds(start_time, coerce_none_to_inf=False)
         if maybe_start_time is None:
-            raise ValueError
+            raise ValueError  # noqa: TRY301
         start_time = int(maybe_start_time)
     except (StreamlitAPIException, ValueError):
         error_msg = TIMEDELTA_PARSE_ERROR_MESSAGE.format(

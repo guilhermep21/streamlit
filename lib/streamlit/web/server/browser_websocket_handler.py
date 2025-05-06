@@ -212,7 +212,7 @@ class BrowserWebSocketHandler(WebSocketHandler, SessionClient):
             if isinstance(payload, str):
                 # Sanity check. (The frontend should only be sending us bytes;
                 # Protobuf.ParseFromString does not accept str input.)
-                raise RuntimeError(
+                raise TypeError(  # noqa: TRY301
                     "WebSocket received an unexpected `str` message. "
                     "(We expect `bytes` only.)"
                 )
