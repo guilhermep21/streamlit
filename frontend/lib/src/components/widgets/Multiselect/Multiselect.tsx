@@ -255,6 +255,7 @@ const Multiselect: FC<Props> = props => {
           noResultsMsg={getNoResultsMsg}
           filterOptions={filterOptions}
           closeOnSelect={false}
+          ignoreCase={false}
           overrides={{
             Popover: {
               props: {

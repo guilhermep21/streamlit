@@ -190,6 +190,7 @@ const Selectbox: React.FC<Props> = ({
         value={selectValue}
         valueKey="value"
         placeholder={selectboxPlaceholder}
+        ignoreCase={false}
         overrides={{
           Root: {
             style: () => ({
