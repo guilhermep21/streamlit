@@ -156,7 +156,7 @@ export function getErrorCell(errorMsg: string, errorDetails = ""): ErrorCell {
  * the given value type.
  */
 export function isErrorCell(cell: GridCell): cell is ErrorCell {
-  return cell.hasOwnProperty("isError") && (cell as ErrorCell).isError
+  return Object.hasOwn(cell, "isError") && (cell as ErrorCell).isError
 }
 
 interface CellWithTooltip extends BaseGridCell {
@@ -168,7 +168,7 @@ interface CellWithTooltip extends BaseGridCell {
  */
 export function hasTooltip(cell: BaseGridCell): cell is CellWithTooltip {
   return (
-    cell.hasOwnProperty("tooltip") && (cell as CellWithTooltip).tooltip !== ""
+    Object.hasOwn(cell, "tooltip") && (cell as CellWithTooltip).tooltip !== ""
   )
 }
 /**
@@ -186,7 +186,7 @@ export function isMissingValueCell(
   cell: BaseGridCell
 ): cell is MissingValueCell {
   return (
-    cell.hasOwnProperty("isMissingValue") &&
+    Object.hasOwn(cell, "isMissingValue") &&
     (cell as MissingValueCell).isMissingValue
   )
 }

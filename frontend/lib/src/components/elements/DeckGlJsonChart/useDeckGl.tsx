@@ -93,11 +93,11 @@ const interpolate = (info: PickingInfo, body: string): string => {
     matchedVariables.forEach((match: string) => {
       const variable = match.substring(1, match.length - 1)
 
-      if (info.object.hasOwnProperty(variable)) {
+      if (Object.hasOwn(info.object, variable)) {
         body = body.replace(match, info.object[variable])
       } else if (
-        info.object.hasOwnProperty("properties") &&
-        info.object.properties.hasOwnProperty(variable)
+        Object.hasOwn(info.object, "properties") &&
+        Object.hasOwn(info.object.properties, variable)
       ) {
         body = body.replace(match, info.object.properties[variable])
       }

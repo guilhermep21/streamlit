@@ -166,8 +166,6 @@ module.exports = {
           "supported in some browsers (e.g. Android WebView).",
       },
     ],
-    // Allow foo.hasOwnProperty("bar")
-    "no-prototype-builtins": "off",
     // Imports should be `import "./FooModule"`, not `import "./FooModule.js"`
     // We need to configure this to check our .tsx files, see:
     // https://github.com/benmosher/eslint-plugin-import/issues/1615#issuecomment-577500405

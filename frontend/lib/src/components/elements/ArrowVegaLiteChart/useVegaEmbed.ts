@@ -241,7 +241,7 @@ export function useVegaEmbed(
       // Remove all datasets that are in the previous but not the current datasets.
       for (const name of Object.keys(prevDataSets)) {
         if (
-          !dataSets.hasOwnProperty(name) &&
+          !Object.hasOwn(dataSets, name) &&
           name !== defaultDataName.current
         ) {
           updateData(vegaView.current, name, null, null)
