@@ -28,11 +28,11 @@ import { StreamlitEndpoints } from "@streamlit/connection"
 import {
   AppRoot,
   BlockNode,
+  ContainerContentsWrapper,
   FileUploadClient,
   IGuestToHostMessage,
   LibContext,
   Profiler,
-  VerticalBlock,
   WidgetStateManager,
 } from "@streamlit/lib"
 import { Logo } from "@streamlit/protobuf"
@@ -213,7 +213,7 @@ function AppView(props: AppViewProps): ReactElement {
     : StyledAppViewMain
 
   const renderBlock = (node: BlockNode): ReactElement => (
-    <VerticalBlock
+    <ContainerContentsWrapper
       node={node}
       endpoints={endpoints}
       widgetMgr={widgetMgr}

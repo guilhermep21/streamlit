@@ -1,4 +1,4 @@
-/**
+/**!
  * Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022-2025)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,17 @@
  * limitations under the License.
  */
 
-import {
-  BlockPropsWithoutWidth as BlockPropsWithoutWidthT,
-  ContainerContentsWrapper,
-  VerticalBlock,
-} from "./Block"
+syntax = "proto3";
 
-export type BlockPropsWithoutWidth = BlockPropsWithoutWidthT
-export { ContainerContentsWrapper, VerticalBlock }
+option java_package = "com.snowflake.apps.streamlit";
+option java_outer_classname = "HeightConfigProto";
+
+package streamlit;
+
+message HeightConfig {
+  oneof height_spec {
+    bool use_stretch = 1;
+    bool use_content = 2;
+    uint32 pixel_height = 3;
+  }
+}

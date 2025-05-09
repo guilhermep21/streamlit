@@ -1,4 +1,4 @@
-/**
+/**!
  * Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022-2025)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,23 @@
  * limitations under the License.
  */
 
-import {
-  BlockPropsWithoutWidth as BlockPropsWithoutWidthT,
-  ContainerContentsWrapper,
-  VerticalBlock,
-} from "./Block"
+syntax = "proto3";
 
-export type BlockPropsWithoutWidth = BlockPropsWithoutWidthT
-export { ContainerContentsWrapper, VerticalBlock }
+option java_package = "com.snowflake.apps.streamlit";
+option java_outer_classname = "GapSizeProto";
+
+package streamlit;
+
+enum GapSize {
+  GAP_UNDEFINED = 0;
+  SMALL = 1;
+  MEDIUM = 2;
+  LARGE = 3;
+  NONE = 4;
+}
+
+message GapConfig {
+  oneof gap_spec {
+    GapSize gap_size = 1;
+  }
+}
