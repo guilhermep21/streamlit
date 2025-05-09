@@ -447,7 +447,8 @@ function useColumnLoader(
       // Reorder columns based on the configured column order:
       columnOrder.forEach(columnName => {
         const column = visibleColumns.find(
-          column => column.name === columnName || column.id === columnName
+          columnArg =>
+            columnArg.name === columnName || columnArg.id === columnName
         )
         if (column) {
           if (column.isPinned) {

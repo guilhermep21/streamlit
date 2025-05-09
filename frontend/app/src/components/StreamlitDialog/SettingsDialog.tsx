@@ -92,7 +92,7 @@ export const SettingsDialog: FC<Props> = memo(function SettingsDialog({
 
   const changeSingleSetting = useCallback(
     (name: string, value: boolean): void => {
-      setState(state => ({ ...state, [name]: value }))
+      setState(prevState => ({ ...prevState, [name]: value }))
     },
     []
   )

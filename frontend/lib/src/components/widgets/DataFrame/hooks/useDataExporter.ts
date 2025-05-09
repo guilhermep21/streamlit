@@ -202,8 +202,8 @@ function useDataExporter(
         link.click()
         document.body.removeChild(link) // Clean up
         URL.revokeObjectURL(url) // Free up memory
-      } catch (error) {
-        LOG.error("Failed to export data as CSV", error)
+      } catch (e) {
+        LOG.error("Failed to export data as CSV", e)
       }
     }
   }, [columns, numRows, getCellContent, enforceDownloadInNewTab])

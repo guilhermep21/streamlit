@@ -111,16 +111,16 @@ function Slider({
   // eslint-disable-next-line react-compiler/react-compiler
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetValueWithSource = useCallback(
-    debounce(DEBOUNCE_TIME_MS, (value: number[]): void => {
-      setValueWithSource({ value, fromUi: true })
+    debounce(DEBOUNCE_TIME_MS, (valueArg: number[]): void => {
+      setValueWithSource({ value: valueArg, fromUi: true })
     }) as (value: number[]) => void,
     []
   )
 
   const handleChange = useCallback(
-    ({ value }: { value: number[] }): void => {
-      setUiValue(value)
-      debouncedSetValueWithSource(value)
+    ({ value: valueArg }: { value: number[] }): void => {
+      setUiValue(valueArg)
+      debouncedSetValueWithSource(valueArg)
     },
     [debouncedSetValueWithSource]
   )

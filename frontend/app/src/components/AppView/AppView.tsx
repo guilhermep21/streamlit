@@ -174,14 +174,16 @@ function AppView(props: AppViewProps): ReactElement {
     )
   }
 
-  const renderLogo = (appLogo: Logo): ReactElement => {
-    const displayImage = appLogo.iconImage ? appLogo.iconImage : appLogo.image
+  const renderLogo = (appLogoArg: Logo): ReactElement => {
+    const displayImage = appLogoArg.iconImage
+      ? appLogoArg.iconImage
+      : appLogoArg.image
     const source = endpoints.buildMediaURL(displayImage)
 
     const logo = (
       <StyledLogo
         src={source}
-        size={appLogo.size}
+        size={appLogoArg.size}
         alt="Logo"
         className="stLogo"
         data-testid="stLogo"
@@ -190,10 +192,10 @@ function AppView(props: AppViewProps): ReactElement {
       />
     )
 
-    if (appLogo.link) {
+    if (appLogoArg.link) {
       return (
         <StyledLogoLink
-          href={appLogo.link}
+          href={appLogoArg.link}
           target="_blank"
           rel="noreferrer"
           data-testid="stLogoLink"

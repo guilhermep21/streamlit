@@ -358,14 +358,14 @@ export const useDeckGl = (props: UseDeckGlProps): UseDeckGlShape => {
     if (!isEqual(deck.initialViewState, initialViewState)) {
       const diff = Object.keys(deck.initialViewState).reduce(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any -- TODO: Replace 'any' with a more specific type.
-        (diff, key): any => {
+        (diffArg, key): any => {
           // @ts-expect-error
           if (deck.initialViewState[key] === initialViewState?.[key]) {
-            return diff
+            return diffArg
           }
 
           return {
-            ...diff,
+            ...diffArg,
             // @ts-expect-error
             [key]: deck.initialViewState[key],
           }
@@ -398,8 +398,8 @@ export const useDeckGl = (props: UseDeckGlProps): UseDeckGlShape => {
   )
 
   const onViewStateChange = useCallback(
-    ({ viewState }: ViewStateChangeParameters) => {
-      setViewState(viewState)
+    ({ viewState: viewStateArg }: ViewStateChangeParameters) => {
+      setViewState(viewStateArg)
     },
     [setViewState]
   )
