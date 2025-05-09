@@ -108,7 +108,7 @@ function AppView(props: AppViewProps): ReactElement {
     endpoints,
   } = props
 
-  React.useEffect(() => {
+  useEffect(() => {
     const listener = (): void => {
       sendMessageToHost({
         type: "UPDATE_HASH",

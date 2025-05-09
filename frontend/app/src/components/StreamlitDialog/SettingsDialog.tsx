@@ -22,6 +22,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
+  useState,
 } from "react"
 
 import {
@@ -88,7 +89,7 @@ export const SettingsDialog: FC<Props> = memo(function SettingsDialog({
   const libContext = useContext(LibContext)
   const activeSettings = useRef(settings)
   const isFirstRun = useRef(true)
-  const [state, setState] = React.useState<UserSettings>({ ...settings })
+  const [state, setState] = useState<UserSettings>({ ...settings })
 
   const changeSingleSetting = useCallback(
     (name: string, value: boolean): void => {

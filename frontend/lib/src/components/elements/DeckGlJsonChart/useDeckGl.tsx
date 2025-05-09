@@ -129,7 +129,8 @@ function getStateFromWidgetMgr(
 
   const stringValue = widgetMgr.getStringValue(element)
   const currState: DeckGlElementState | null = stringValue
-    ? JSON5.parse(stringValue)
+    ? // eslint-disable-next-line import/no-named-as-default-member
+      JSON5.parse(stringValue)
     : null
 
   return currState ?? EMPTY_STATE
@@ -214,6 +215,7 @@ export const useDeckGl = (props: UseDeckGlProps): UseDeckGlShape => {
     isSelectionModeActivated && Object.keys(data.selection.indices).length > 0
 
   const parsedPydeckJson = useMemo(() => {
+    // eslint-disable-next-line import/no-named-as-default-member
     return Object.freeze(JSON5.parse<ParsedDeckGlConfig>(element.json))
     // Only parse JSON when transitioning to/from fullscreen, the json changes, or theme changes
     // TODO: Update to match React best practices
@@ -384,6 +386,7 @@ export const useDeckGl = (props: UseDeckGlProps): UseDeckGlShape => {
         return null
       }
 
+      // eslint-disable-next-line import/no-named-as-default-member
       const parsedTooltip = JSON5.parse(tooltip)
 
       if (parsedTooltip.html) {

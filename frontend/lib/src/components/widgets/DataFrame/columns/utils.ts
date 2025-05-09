@@ -686,6 +686,7 @@ export function toSafeDate(value: any): Date | null | undefined {
       }
 
       // Parse it as a unix timestamp in seconds
+      // eslint-disable-next-line import/no-named-as-default-member
       const parsedMomentDate = moment.unix(timestampInSeconds).utc()
       if (parsedMomentDate.isValid()) {
         return parsedMomentDate.toDate()
@@ -694,15 +695,20 @@ export function toSafeDate(value: any): Date | null | undefined {
 
     if (typeof value === "string") {
       // Try to parse string via momentJS:
+      // eslint-disable-next-line import/no-named-as-default-member
       const parsedMomentDate = moment.utc(value)
       if (parsedMomentDate.isValid()) {
         return parsedMomentDate.toDate()
       }
       // The pasted value was not a valid date string
       // Try to interpret value as time string instead (HH:mm:ss)
+      // eslint-disable-next-line import/no-named-as-default-member
       const parsedMomentTime = moment.utc(value, [
+        // eslint-disable-next-line import/no-named-as-default-member
         moment.HTML5_FMT.TIME_MS, // HH:mm:ss.SSS
+        // eslint-disable-next-line import/no-named-as-default-member
         moment.HTML5_FMT.TIME_SECONDS, // HH:mm:ss
+        // eslint-disable-next-line import/no-named-as-default-member
         moment.HTML5_FMT.TIME, // HH:mm
       ])
       if (parsedMomentTime.isValid()) {
