@@ -379,19 +379,47 @@ def iframed_app(page: Page, app_port: int) -> IframedPage:
     app_url = f"http://localhost:{app_port}"
     # the CSP header returned for the Streamlit index.html loaded in the iframe. This is
     # similar to a common CSP we have seen in the wild.
-    app_csp_header = (
-        f"default-src 'none'; worker-src blob:; form-action 'none'; "
-        f"connect-src ws://localhost:{app_port}/_stcore/stream "
-        f"http://localhost:{app_port}/_stcore/allowed-message-origins "
-        f"http://localhost:{app_port}/_stcore/upload_file/ "
-        f"https://some-prefix.com/somethingelse/_stcore/upload_file/ "
-        f"http://localhost:{app_port}/_stcore/host-config "
-        f"http://localhost:{app_port}/_stcore/health; script-src 'unsafe-inline' "
-        f"'unsafe-eval' {app_url}/static/js/; style-src 'unsafe-inline' "
-        f"{app_url}/static/css/; img-src data: {app_url}/favicon.png "
-        f"{app_url}/favicon.ico; font-src {app_url}/static/fonts/ "
-        f"{app_url}/static/media/; frame-ancestors {fake_iframe_server_origin};"
-    )
+    app_csp_header = f"""
+default-src 'none';
+worker-src blob:;
+form-action 'none';
+frame-ancestors {fake_iframe_server_origin};
+frame-src data: {app_url}/_stcore/component/;
+img-src 'self' https: data: blob:;
+media-src 'self' https: data: blob:;
+connect-src ws://localhost:{app_port}/_stcore/stream
+    {app_url}/_stcore/allowed-message-origins
+    {app_url}/_stcore/upload_file/
+    {app_url}/_stcore/host-config
+    {app_url}/_stcore/health
+    {app_url}/_stcore/message
+    {app_url}/media/
+    https://some-prefix.com/somethingelse/_stcore/upload_file/
+    https://events.mapbox.com/
+    https://api.mapbox.com/v4/
+    https://api.mapbox.com/raster/v1/
+    https://api.mapbox.com/rasterarrays/v1/
+    https://api.mapbox.com/styles/v1/mapbox/
+    https://api.mapbox.com/fonts/v1/mapbox/
+    https://api.mapbox.com/models/v1/mapbox/
+    https://api.mapbox.com/map-sessions/v1
+    https://data.streamlit.io/tokens.json
+    https://basemaps.cartocdn.com
+    https://tiles.basemaps.cartocdn.com
+    https://tiles-a.basemaps.cartocdn.com
+    https://tiles-b.basemaps.cartocdn.com
+    https://tiles-c.basemaps.cartocdn.com
+    https://tiles-d.basemaps.cartocdn.com
+    data: blob:;
+style-src 'unsafe-inline'
+    https://api.mapbox.com/mapbox-gl-js/
+    {app_url}/static/css/
+    blob:;
+script-src 'unsafe-inline' 'wasm-unsafe-eval' blob:
+    https://api.mapbox.com/mapbox-gl-js/
+    {app_url}/static/js/;
+font-src {app_url}/static/fonts/ {app_url}/static/media/ https: data: blob:;
+""".replace("\n", " ").strip()
 
     def _open_app(iframe_element_attrs: IframedPageAttrs | None = None) -> FrameLocator:
         _iframe_element_attrs = iframe_element_attrs
@@ -495,6 +523,7 @@ def iframed_app(page: Page, app_port: int) -> IframedPage:
             frame_locator.nth(0).get_by_test_id("stAppViewContainer").wait_for(
                 timeout=30000, state="attached"
             )
+
         return frame_locator
 
     return IframedPage(page, _open_app)
