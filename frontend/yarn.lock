@@ -3187,7 +3187,6 @@ __metadata:
     eslint: "npm:^8.33.0"
     eslint-plugin-streamlit-custom: "workspace:^"
     eslint-plugin-vitest: "npm:^0.5.4"
-    fzy.js: "npm:^0.4.1"
     hoist-non-react-statics: "npm:^3.3.2"
     immer: "npm:^9.0.19"
     json5: "npm:^2.2.3"
@@ -10581,13 +10580,6 @@ __metadata:
   version: 1.2.3
   resolution: "functions-have-names@npm:1.2.3"
   checksum: 10c0/33e77fd29bddc2d9bb78ab3eb854c165909201f88c75faa8272e35899e2d35a8a642a15e7420ef945e1f64a9670d6aa3ec744106b2aa42be68ca5114025954ca
-  languageName: node
-  linkType: hard
-
-"fzy.js@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "fzy.js@npm:0.4.1"
-  checksum: 10c0/e531b4ac4a9f6434d82dc1108f0f436763c122eb6ffd1e14907ea08ec15ac536f4689965fb249128d46e01f1ba59c7c9007d305ae3edd2e0fc4672e5a8c528a1
   languageName: node
   linkType: hard
 
