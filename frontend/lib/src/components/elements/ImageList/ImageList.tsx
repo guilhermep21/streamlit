@@ -37,6 +37,7 @@ import {
   StyledImageContainer,
   StyledImageList,
 } from "./styled-components"
+import { ImageCarousel } from "./ImageCarousel"
 
 const LOG = getLogger("ImageList")
 
@@ -78,6 +79,10 @@ function ImageList({
 
   // The width of the element is the width of the container, not necessarily the image.
   const elementWidth = width || 0
+
+  const images = element.imgs
+  const isCarousel = element.carousel === true && images.length > 1
+
   // The width field in the proto sets the image width, but has special
   // cases the values in the WidthBehavior enum.
   let imageWidth: number | undefined
@@ -151,35 +156,47 @@ function ImageList({
         onCollapse={collapse}
         disableFullscreenMode={disableFullscreenMode}
       ></Toolbar>
-      <StyledImageList className="stImage" data-testid="stImage">
-        {element.imgs.map((iimage, idx): ReactElement => {
-          const image = iimage as ImageProto
-          return (
-            // TODO: Update to match React best practices
-            // eslint-disable-next-line @eslint-react/no-array-index-key
-            <StyledImageContainer data-testid="stImageContainer" key={idx}>
-              <img
-                style={imgStyle}
-                src={endpoints.buildMediaURL(image.url)}
-                alt={idx.toString()}
-                onError={handleImageError}
-              />
-              {image.caption && (
-                <StyledCaption data-testid="stImageCaption" style={imgStyle}>
-                  <StreamlitMarkdown
-                    source={image.caption}
-                    allowHTML={false}
-                    isCaption
-                    // This is technically not a label but we want the same restrictions
-                    // as for labels (e.g. no Markdown tables or horizontal rule).
-                    isLabel
-                  />
-                </StyledCaption>
-              )}
-            </StyledImageContainer>
-          )
-        })}
-      </StyledImageList>
+
+      {isCarousel ? (
+        <ImageCarousel
+          images={images.map(img => img as ImageProto)}
+          endpoints={endpoints}
+          elementWidth={elementWidth}
+          imgStyle={imgStyle}
+          isFullScreen={isFullScreen}
+          onImageError={handleImageError}
+        />
+      ) : (
+        <StyledImageList className="stImage" data-testid="stImage">
+          {element.imgs.map((iimage, idx): ReactElement => {
+            const image = iimage as ImageProto
+            return (
+              // TODO: Update to match React best practices
+              // eslint-disable-next-line @eslint-react/no-array-index-key
+              <StyledImageContainer data-testid="stImageContainer" key={idx}>
+                <img
+                  style={imgStyle}
+                  src={endpoints.buildMediaURL(image.url)}
+                  alt={idx.toString()}
+                  onError={handleImageError}
+                />
+                {image.caption && (
+                  <StyledCaption data-testid="stImageCaption" style={imgStyle}>
+                    <StreamlitMarkdown
+                      source={image.caption}
+                      allowHTML={false}
+                      isCaption
+                      // This is technically not a label but we want the same restrictions
+                      // as for labels (e.g. no Markdown tables or horizontal rule).
+                      isLabel
+                    />
+                  </StyledCaption>
+                )}
+              </StyledImageContainer>
+            )
+          })}
+        </StyledImageList>
+      )}
     </StyledToolbarElementContainer>
   )
 }

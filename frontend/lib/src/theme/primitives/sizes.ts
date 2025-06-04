@@ -62,4 +62,6 @@ export const sizes = {
   // The minimum width of the menu (used for the dataframe column menu)
   minMenuWidth: "8rem",
   minChatInputFileListHeight: "3rem",
+  // Used for buttons in the image carousel
+  buttonSize: "3rem",
 }

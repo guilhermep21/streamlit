@@ -184,6 +184,7 @@ def marshall(
         width=image_width,
         proto_imgs=image_list_proto,
         clamp=False,
+        carousel=False,
         channels="RGB",
         output_format="PNG",
     )

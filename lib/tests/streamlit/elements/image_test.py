@@ -350,6 +350,7 @@ class ImageProtoTest(DeltaGeneratorTestCase):
             0,
             image_list_proto,
             False,
+            False,
         )
 
         img = image_list_proto.imgs[0]

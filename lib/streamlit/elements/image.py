@@ -54,6 +54,7 @@ class ImageMixin:
         width: int | None = None,
         use_column_width: UseColumnWith = None,
         clamp: bool = False,
+        carousel: bool = False,
         channels: Channels = "RGB",
         output_format: ImageFormatOrAuto = "auto",
         *,
@@ -108,6 +109,11 @@ class ImageMixin:
             ignored for image URLs and files. If this is ``False`` (default)
             and an image has an out-of-range value, a ``RuntimeError`` will be
             raised.
+        carousel : bool
+            Whether to display the images in a carousel. If this is ``True``,
+            Streamlit displays the images in a carousel that users can swipe
+            through. If this is ``False`` (default), Streamlit displays the
+            images sequencially and vertically.
         channels : "RGB" or "BGR"
             The color format when ``image`` is an ``nd.array``. This is ignored
             for other image types. If this is ``"RGB"`` (default),
@@ -177,6 +183,7 @@ class ImageMixin:
             image_width = WidthBehavior.MIN_IMAGE_OR_CONTAINER
 
         image_list_proto = ImageListProto()
+        image_list_proto.carousel = carousel
         marshall_images(
             self.dg._get_delta_path_str(),
             image,
@@ -184,6 +191,7 @@ class ImageMixin:
             image_width,
             image_list_proto,
             clamp,
+            carousel,
             channels,
             output_format,
         )

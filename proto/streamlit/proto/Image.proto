@@ -46,4 +46,6 @@ message ImageList {
   // -4 means use the smaller of image width & container width
   // -5 means use the larger of image width & container width
   int32 width = 2;
+
+  bool carousel = 3;
 }

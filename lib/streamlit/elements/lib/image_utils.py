@@ -350,6 +350,7 @@ def marshall_images(
     width: int | WidthBehavior,
     proto_imgs: ImageListProto,
     clamp: bool,
+    carousel: bool,
     channels: Channels = "RGB",
     output_format: ImageFormatOrAuto = "auto",
 ) -> None:
@@ -377,6 +378,10 @@ def marshall_images(
         This is only meaningful for byte array images; the parameter is
         ignored for image URLs. If this is not set, and an image has an
         out-of-range value, an error will be thrown.
+    carousel
+        If True, the images will be displayed in a carousel. This is only
+        meaningful for lists of images. If False, the images will be
+        displayed in sequence vertically. Defaults to False.
     channels
         If image is an nd.array, this parameter denotes the format used to
         represent color information. Defaults to 'RGB', meaning
@@ -427,6 +432,9 @@ def marshall_images(
         )
 
     proto_imgs.width = int(width)
+
+    if carousel:
+        proto_imgs.carousel = True
     # Each image in an image list needs to be kept track of at its own coordinates.
     for coord_suffix, (single_image, single_caption) in enumerate(
         zip(images, captions)
